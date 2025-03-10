@@ -98,7 +98,7 @@ if __name__ == "__main__":
     ROOT = "/kaggle"
     config_path = "/kaggle/working/Relational-Group-Activity-Recognition/configs/RCRG_R2_C21.yml"
     person_cls_checkpoint_path = "/kaggle/input/person-activity-classifier/Relational-Group-Activity-Recognition/experiments/person_activity_classifier_V1_2025_03_03_17_08/checkpoint_epoch_16.pkl" # Personn Activity Classifier checkpoint
-    output_dir = "/kaggle/working/Relational-Group-Activity-Recognition/experiments"
+    output_dir = "/kaggle/working/Relational-Group-Activity-Recognition/experiments/single_frame_models"
     
     train_RCRG_R2_C21(
         ROOT=ROOT,
