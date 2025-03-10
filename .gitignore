@@ -1,0 +1,11 @@
+.kaggle
+data
+*.pkl
+__pycache__
+*.pyc
+models/temporal_models
+models/attention_models
+models/single_frame_models
+experiments/*
+training/*
+config/*
