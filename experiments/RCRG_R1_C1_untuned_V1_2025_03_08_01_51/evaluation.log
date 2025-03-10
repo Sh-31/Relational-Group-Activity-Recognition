@@ -1,0 +1,24 @@
+2025-03-08 20:01:08,847 - 
+==================================================
+Group Activity RCRG_R1_C1_untuned eval on testset
+==================================================
+Accuracy : 80.86%
+Average Loss: 0.5861
+F1 Score (Weighted): 0.8088
+
+Classification Report:
+              precision    recall  f1-score   support
+
+       r_set       0.74      0.72      0.73      1728
+     r_spike       0.86      0.84      0.85      1557
+      r-pass       0.71      0.75      0.73      1890
+  r_winpoint       0.88      0.81      0.84       783
+  l_winpoint       0.82      0.90      0.86       918
+      l-pass       0.83      0.83      0.83      2034
+     l-spike       0.87      0.86      0.87      1611
+       l_set       0.82      0.80      0.81      1512
+
+    accuracy                           0.81     12033
+   macro avg       0.82      0.82      0.82     12033
+weighted avg       0.81      0.81      0.81     12033
+

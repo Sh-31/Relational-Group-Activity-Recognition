@@ -1,0 +1,24 @@
+2025-03-10 00:08:20,306 - 
+==================================================
+Group Activity RCRG-R2-C11-conc eval on testset
+==================================================
+Accuracy : 89.60%
+Average Loss: 0.4149
+F1 Score (Weighted): 0.8958
+
+Classification Report:
+              precision    recall  f1-score   support
+
+       r_set       0.91      0.81      0.86      1728
+     r_spike       0.92      0.91      0.91      1557
+      r-pass       0.84      0.91      0.88      1890
+  r_winpoint       0.91      0.92      0.91       783
+  l_winpoint       0.91      0.94      0.93       918
+      l-pass       0.90      0.93      0.91      2034
+     l-spike       0.93      0.89      0.91      1611
+       l_set       0.88      0.88      0.88      1512
+
+    accuracy                           0.90     12033
+   macro avg       0.90      0.90      0.90     12033
+weighted avg       0.90      0.90      0.90     12033
+

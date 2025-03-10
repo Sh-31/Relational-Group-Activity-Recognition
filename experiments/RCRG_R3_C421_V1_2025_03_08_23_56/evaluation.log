@@ -1,0 +1,24 @@
+2025-03-09 23:56:40,321 - 
+==================================================
+Group Activity RCRG-R3-C421 eval on testset
+==================================================
+Accuracy : 88.97%
+Average Loss: 0.3934
+F1 Score (Weighted): 0.8896
+
+Classification Report:
+              precision    recall  f1-score   support
+
+       r_set       0.90      0.82      0.86      1728
+     r_spike       0.92      0.90      0.91      1557
+      r-pass       0.84      0.91      0.87      1890
+  r_winpoint       0.88      0.92      0.90       783
+  l_winpoint       0.94      0.91      0.92       918
+      l-pass       0.89      0.92      0.90      2034
+     l-spike       0.91      0.89      0.90      1611
+       l_set       0.88      0.87      0.87      1512
+
+    accuracy                           0.89     12033
+   macro avg       0.89      0.89      0.89     12033
+weighted avg       0.89      0.89      0.89     12033
+
