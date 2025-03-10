@@ -3,5 +3,4 @@ data
 *.pkl
 __pycache__
 *.pyc
-models/temporal_models
 models/attention_models
