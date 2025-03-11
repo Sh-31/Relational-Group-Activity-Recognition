@@ -65,8 +65,8 @@ data:
   videos_path: input/group-activity-recognition-volleyball/videos
 experiment:
   description: Close to the RCRG-1R-1C variant, but uses 2 relational layers (2R)
-    of sizes 256 and 128. The graphs of these 2 layers are 1 clique (11C) of all people.
-    This variant and the next ones explore stacking layers with different graph structures.
+    of sizes 256 and 128, the graphs of these 2 layers are 1 clique (11C) of all people,
+    the variant and the next ones explore stacking layers with different graph structures.
   name: RCRG_R2_C11
   seed: 31
   version: 1
@@ -88,8 +88,8 @@ training:
   group_activity:
     balance: false
     batch_size: 64
-    epochs: 25
-    label_smoothing: 0.05
-    learning_rate: 6.0e-06
+    epochs: 30
+    label_smoothing: 0.01
+    learning_rate: 1.0e-05
     optimizer: AdamW
     weight_decay: 1

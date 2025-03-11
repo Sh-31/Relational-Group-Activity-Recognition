@@ -199,7 +199,7 @@ def eval(root, config, checkpoint_path):
 if __name__ == "__main__":
     ROOT = "/teamspace/studios/this_studio/Relational-Group-Activity-Recognition"
     CONFIG_PATH = f"{ROOT}/configs/RCRG_R2_C21.yml"
-    MODEL_CHECKPOINT = f"{ROOT}/experiments/RCRG_R2_C21_V1_2025_03_07_00_40/checkpoint_epoch_30.pkl"
+    MODEL_CHECKPOINT = f"{ROOT}/experiments/single_frame_models/RCRG_R2_C21_V1_2025_03_10_00_46/checkpoint_epoch_32.pkl"
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--ROOT", type=str, default=ROOT,

@@ -87,8 +87,8 @@ training:
   group_activity:
     balance: false
     batch_size: 64
-    epochs: 40
+    epochs: 35
     label_smoothing: 0.01
-    learning_rate: 6.0e-06
+    learning_rate: 1.0e-05
     optimizer: AdamW
     weight_decay: 1

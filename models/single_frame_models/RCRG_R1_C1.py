@@ -160,7 +160,7 @@ def eval(root, config, checkpoint_path):
     )
     
     criterion = nn.CrossEntropyLoss()
-    prefix = "Group Activity RCRG_R1_C1_untuned eval on testset"
+    prefix = "Group Activity RCRG-R1-C1 eval on testset"
     path = str(Path(checkpoint_path).parent)
 
     metrics = model_eval(
@@ -179,9 +179,8 @@ def eval(root, config, checkpoint_path):
 if __name__ == "__main__":
     ROOT = "/teamspace/studios/this_studio/Relational-Group-Activity-Recognition"
     CONFIG_PATH = f"{ROOT}/configs/RCRG_R1_C1.yml"
-
-    MODEL_CHECKPOINT_UNTUNED = f"{ROOT}/experiments/RCRG_R1_C1_untuned_V1_2025_03_08_01_51/checkpoint_epoch_11.pkl"
-    MODEL_CHECKPOINT = f"{ROOT}/experiments/RCRG_R1_C1_V1_2025_03_05_19_33/checkpoint_epoch_17.pkl"
+    # MODEL_CHECKPOINT_UNTUNED = f"{ROOT}/experiments/single_frame_models/RCRG_R1_C1_untuned_V1_2025_03_08_01_51/checkpoint_epoch_11.pkl"
+    MODEL_CHECKPOINT = f"{ROOT}/experiments/single_frame_models/RCRG_R1_C1_V1_2025_03_10_00_19/checkpoint_epoch_23.pkl"
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--ROOT", type=str, default=ROOT,
@@ -195,4 +194,4 @@ if __name__ == "__main__":
     group_classifer = GroupActivityClassifer(person_classifer, 8, 'cpu')
     
     summary(group_classifer)
-    eval(ROOT, CONFIG, MODEL_CHECKPOINT_UNTUNED)
+    eval(ROOT, CONFIG, MODEL_CHECKPOINT)
