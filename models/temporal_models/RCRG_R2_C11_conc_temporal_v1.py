@@ -1,9 +1,11 @@
 """
-RCRG-R2-C11-conc (RCRG-2R-11C-conc) Description:
+RCRG-R2-C11-conc-temporal-V1 (RCRG-2R-11C-conc) Description:
 --------------------------------
-Close to the RCRG-1R-1C variant, but uses 2 relational layers (2R) of sizes 256 and 128. 
-The graphs of these 2 layers are 1 clique (11C) of all people. -conc 
-postfix is used to indicate concatenation pooling instead of max-pooling.
+Uses 2 relational layers (2R) of sizes 256 and 128. 
+The graphs of these 2 layers are 1 clique (11C) of all people. 
+- conc: postfix is used to indicate concatenation pooling instead of max-pooling.
+- temporal: postfix is used to indicate model work with seqance of frames not a frame
+- V1: postfix is used to indicate the lstm unit is used before the relational layers.
 """
 import sys
 from pathlib import Path
@@ -168,13 +170,13 @@ def eval(root, config, checkpoint_path):
         split=config.data['video_splits']['test'],
         labels=group_activity_labels,
         transform=test_transforms,
-        seq=False,
+        seq=True,
         sort=True
     )
 
     test_loader = DataLoader(
         test_dataset,
-        batch_size=128,
+        batch_size=10,
         shuffle=True,
         num_workers=4,
         collate_fn=collate_fn,
@@ -182,7 +184,7 @@ def eval(root, config, checkpoint_path):
     )
     
     criterion = nn.CrossEntropyLoss()
-    prefix = "Group Activity RCRG_R2_C11 eval on testset"
+    prefix = "Group Activity RCRG-R2-C11-conc-temporal-V1 eval on testset"
     path = str(Path(checkpoint_path).parent)
 
     metrics = model_eval(
@@ -199,9 +201,9 @@ def eval(root, config, checkpoint_path):
 
 
 if __name__ == "__main__":
-    ROOT = ""
-    CONFIG_PATH = f"{ROOT}/configs/"
-    MODEL_CHECKPOINT = f"{ROOT}/experiments/"
+    ROOT = "/teamspace/studios/this_studio/Relational-Group-Activity-Recognition"
+    CONFIG_PATH = f"{ROOT}/configs/RCRG_R2_C11_conc_temporal.yml"
+    MODEL_CHECKPOINT = f"{ROOT}/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_34.pkl"
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--ROOT", type=str, default=ROOT,
@@ -209,10 +211,10 @@ if __name__ == "__main__":
     parser.add_argument("--config_path", type=str, default=CONFIG_PATH,
                         help="Path to the YAML configuration file")
 
-    # CONFIG = load_config(CONFIG_PATH)
+    CONFIG = load_config(CONFIG_PATH)
 
     person_classifer = PersonActivityClassifier(9)
     group_classifer = GroupActivityClassifer(person_classifer, 8, 'cpu')
     
-    summary(group_classifer, input_size=(2, 12, 9, 3, 224, 224))
-    # eval(ROOT, CONFIG, MODEL_CHECKPOINT)
+    summary(group_classifer)
+    eval(ROOT, CONFIG, MODEL_CHECKPOINT)
