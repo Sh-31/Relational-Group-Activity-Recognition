@@ -15,6 +15,7 @@ import torch
 import argparse
 import itertools
 import torch.nn as nn
+import torch.nn.functional as F
 import albumentations as A
 import torchvision.models as models
 from albumentations.pytorch import ToTensorV2
@@ -82,11 +83,11 @@ class GroupActivityClassifer(nn.Module):
             nn.Linear(1792, 1024),
             nn.BatchNorm1d(1024),
             nn.ReLU(),
-            nn.Dropout(0.5),
+            nn.Dropout(0.7),
             nn.Linear(1024, 512),
             nn.BatchNorm1d(512),
             nn.ReLU(),
-            nn.Dropout(0.5),
+            nn.Dropout(0.7),
             nn.Linear(512, num_classes), 
         )
     
@@ -116,6 +117,12 @@ class GroupActivityClassifer(nn.Module):
         num_nodes = x.shape[1]  # all 12 player at one graph 
         edge_index = torch.tensor([(i, j) for i, j in itertools.permutations(range(num_nodes), 2)]).t().to(self.device) # Generate all (i, j) pairs where i ≠ j
         x_r3 = self.r3(x, edge_index) # (b, bb, 512)
+
+        # Apply additional layer-wise regularization during training
+        if self.training:
+            x_r1 = F.dropout2d(x_r1, p=0.2)  # Channel dropout
+            x_r2 = F.dropout2d(x_r2, p=0.2)  # Channel dropout
+            x_r3 = F.dropout2d(x_r3, p=0.2)  # Channel dropout
 
         x = torch.concat([x_r1, x_r2, x_r3], dim=2) # (b, bb, 896)
         team_1 = self.pool(x[:, :6, :]) # (b, 1, 896) 
@@ -231,5 +238,5 @@ if __name__ == "__main__":
     person_classifer = PersonActivityClassifier(9)
     group_classifer = GroupActivityClassifer(person_classifer, 8, 'cpu')
    
-    #summary(group_classifer, input_size=(2, 12, 3, 224, 224))
+    # summary(group_classifer, input_size=(2, 12, 3, 224, 224))
     #eval(ROOT, CONFIG, MODEL_CHECKPOINT)

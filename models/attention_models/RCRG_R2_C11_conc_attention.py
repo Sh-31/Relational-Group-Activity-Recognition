@@ -14,6 +14,7 @@ import torch
 import argparse
 import itertools
 import torch.nn as nn
+import torch.nn.functional as F
 import albumentations as A
 import torchvision.models as models
 from albumentations.pytorch import ToTensorV2
@@ -73,11 +74,11 @@ class GroupActivityClassifer(nn.Module):
             nn.Linear(12*384, 1024),
             nn.BatchNorm1d(1024),
             nn.ReLU(),
-            nn.Dropout(0.5),
+            nn.Dropout(0.7),
             nn.Linear(1024, 512),
             nn.BatchNorm1d(512),
             nn.ReLU(),
-            nn.Dropout(0.5),
+            nn.Dropout(0.7),
             nn.Linear(512, num_classes), 
         )
     
@@ -93,6 +94,12 @@ class GroupActivityClassifer(nn.Module):
 
         x1 = self.r1(x, edge_index)       # (b, bb, 128)
         x2 = self.r2(x, edge_index)       # (b, bb, 256)
+
+        # Apply additional layer-wise regularization during training
+        if self.training:
+            x1 = F.dropout2d(x1, p=0.2)  # Channel dropout
+            x1 = F.dropout2d(x2, p=0.2)  # Channel dropout
+
         x = torch.concat([x1, x2], dim=2) # (b, bb, 384) 
         x = x.view(b, -1)                 # (b, bb*384) 
         x = self.fc(x)                    # (b, num_classes)

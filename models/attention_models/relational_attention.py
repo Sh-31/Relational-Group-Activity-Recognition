@@ -8,7 +8,14 @@ from torch_geometric.nn import GATConv
 class RelationalUnit(MessagePassing):
     def __init__(self, in_channels, out_channels, heads=4):
         super(RelationalUnit, self).__init__(aggr='add')  
-        self.gat = GATConv(in_channels, out_channels, heads=heads, concat=False, dropout=0.5)
+        self.gat = GATConv(
+            in_channels, 
+            out_channels, 
+            heads=heads, 
+            concat=False, 
+            negative_slope=0.2,
+            dropout=0.6
+        )
 
     def forward(self, x, edge_index):
         # https://github.com/pyg-team/pytorch_geometric/issues/2844
