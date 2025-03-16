@@ -6,14 +6,14 @@ import torch
 from trainer import ddp_train
 from utils.helper_utils import load_config
 from utils.data_utils import Group_Activity_DataSet, group_activity_labels
-from models.single_frame_models.RCRG_R1_C1 import PersonActivityClassifier, GroupActivityClassifer, collate_fn
+
+from models.single_frame_models.RCRG_R3_C421 import PersonActivityClassifier, GroupActivityClassifer, collate_fn
 
 import albumentations as A
-from torch.utils.data import DataLoader
 from albumentations.pytorch import ToTensorV2
 
 
-def train_RCRG_R1_C1(
+def train(
     ROOT,
     config_path,
     person_cls_checkpoint_path,
@@ -31,7 +31,7 @@ def train_RCRG_R1_C1(
             A.GaussNoise(),
             A.MotionBlur(blur_limit=5), 
             A.MedianBlur(blur_limit=5)  
-        ], p=0.75),
+        ], p=0.95),
         A.OneOf([
             A.HorizontalFlip(),
             A.VerticalFlip(),
@@ -68,13 +68,13 @@ def train_RCRG_R1_C1(
     )
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    
+    person_cls_checkpoint = torch.load(person_cls_checkpoint_path)
+
     person_classifer = PersonActivityClassifier(
         num_classes=config.model['num_classes']['person_activity']
     )
 
-    # person_cls_checkpoint = torch.load(person_cls_checkpoint_path)   
-    # person_classifer.load_state_dict(person_cls_checkpoint['model_state_dict']) # to use the tuned resnet-50 uncomments this
+    person_classifer.load_state_dict(person_cls_checkpoint['model_state_dict'])
 
     model = GroupActivityClassifer(
         person_feature_extraction=person_classifer, 
@@ -94,15 +94,14 @@ def train_RCRG_R1_C1(
         class_names=config.model['num_clases_label']['group_activity']
     )
 
-
 if __name__ == "__main__":
    
     ROOT = "/kaggle"
-    config_path = "/kaggle/working/Relational-Group-Activity-Recognition/configs/RCRG_R1_C1.yml"
+    config_path = "/kaggle/working/Relational-Group-Activity-Recognition/configs/..."
     person_cls_checkpoint_path = "/kaggle/input/person-activity-classifier/Relational-Group-Activity-Recognition/experiments/person_activity_classifier_V1_2025_03_03_17_08/checkpoint_epoch_16.pkl" # Personn Activity Classifier checkpoint
     output_dir = "/kaggle/working/Relational-Group-Activity-Recognition/experiments/single_frame_models"
     
-    train_RCRG_R1_C1(
+    train(
         ROOT=ROOT,
         config_path=config_path,
         person_cls_checkpoint_path=person_cls_checkpoint_path,

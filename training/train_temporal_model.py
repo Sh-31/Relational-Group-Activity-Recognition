@@ -6,13 +6,13 @@ import torch
 from trainer import ddp_train
 from utils.helper_utils import load_config
 from utils.data_utils import Group_Activity_DataSet, group_activity_labels
-from models.single_frame_models.RCRG_R3_C421 import PersonActivityClassifier, GroupActivityClassifer, collate_fn
+from models.temporal_models.RCRG_R2_C11_conc_temporal_v3 import PersonActivityClassifier, GroupActivityClassifer, collate_fn
 
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
 
 
-def train_RCRG_R3_C421(
+def train(
     ROOT,
     config_path,
     person_cls_checkpoint_path,
@@ -30,7 +30,7 @@ def train_RCRG_R3_C421(
             A.GaussNoise(),
             A.MotionBlur(blur_limit=5), 
             A.MedianBlur(blur_limit=5)  
-        ], p=0.95),
+        ], p=0.75),
         A.OneOf([
             A.HorizontalFlip(),
             A.VerticalFlip(),
@@ -52,7 +52,7 @@ def train_RCRG_R3_C421(
         split=config.data['video_splits']['train'],
         labels=group_activity_labels,
         transform=train_transforms,
-        seq=False, 
+        seq=True, 
         sort=True
     )
     
@@ -62,7 +62,7 @@ def train_RCRG_R3_C421(
         split=config.data['video_splits']['validation'],
         labels=group_activity_labels,
         transform=val_transforms,
-        seq=False,
+        seq=True,
         sort=True
     )
 
@@ -96,11 +96,11 @@ def train_RCRG_R3_C421(
 if __name__ == "__main__":
    
     ROOT = "/kaggle"
-    config_path = "/kaggle/working/Relational-Group-Activity-Recognition/configs/RCRG_R3_C421.yml"
+    config_path = "/kaggle/working/Relational-Group-Activity-Recognition/configs/RCRG_R2_C11_conc_temporal.yml"
     person_cls_checkpoint_path = "/kaggle/input/person-activity-classifier/Relational-Group-Activity-Recognition/experiments/person_activity_classifier_V1_2025_03_03_17_08/checkpoint_epoch_16.pkl" # Personn Activity Classifier checkpoint
-    output_dir = "/kaggle/working/Relational-Group-Activity-Recognition/experiments/single_frame_models"
+    output_dir = "/kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models"
     
-    train_RCRG_R3_C421(
+    train(
         ROOT=ROOT,
         config_path=config_path,
         person_cls_checkpoint_path=person_cls_checkpoint_path,
