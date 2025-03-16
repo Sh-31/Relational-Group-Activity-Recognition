@@ -3,9 +3,10 @@ RCRG-R2-C11-conc-temporal-v3 (RCRG-2R-11C-conc) Description:
 --------------------------------
 Uses 2 relational layers (2R) of sizes 256 and 128. 
 The graphs of these 2 layers are 1 clique (11C) of all people. 
-- conc: postfix is used to indicate concatenation pooling instead of max-pooling.
-- temporal: postfix is used to indicate model work with seqance of frames not a frame
-- v3: postfix is used to indicate there are to lstm units one before relational layers and after.
+
+- Conc: postfix is used to indicate concatenation pooling instead of max-pooling.
+- Temporal: postfix is used to indicate model work with seqance of frames not a frame.
+- V3: postfix is used to indicate there are to lstm units one before relational layers and after.
 """
 import sys
 from pathlib import Path
@@ -206,7 +207,6 @@ def eval(root, config, checkpoint_path):
     )
 
     return metrics
-
 
 if __name__ == "__main__":
     ROOT = "/teamspace/studios/this_studio/Relational-Group-Activity-Recognition"

@@ -6,7 +6,7 @@ The second layer is all-pairs relations (1C).
 RCRG-2R-21C-conc replaces the max pool strategy with concatenation pooling this also thrid
 Variation for the model means the there is lstm units one before relational layers and after.
 
-- temporal: postfix is used to indicate model work with seqance of frames not a frame.
+- Temporal: postfix is used to indicate model work with seqance of frames not a frame.
 """
 
 import sys
@@ -193,7 +193,7 @@ def eval(root, config, checkpoint_path):
 
     test_loader = DataLoader(
         test_dataset,
-        batch_size=8,
+        batch_size=12,
         shuffle=True,
         num_workers=4,
         collate_fn=collate_fn,
@@ -233,5 +233,5 @@ if __name__ == "__main__":
     person_classifer = PersonActivityClassifier(9)
     group_classifer = GroupActivityClassifer(person_classifer, 8, 'cpu')
     
-    summary(group_classifer, input_size=(2, 12, 9, 3, 224, 224))
+    summary(group_classifer)
     eval(ROOT, CONFIG, MODEL_CHECKPOINT)

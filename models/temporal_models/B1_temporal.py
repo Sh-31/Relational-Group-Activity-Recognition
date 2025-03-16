@@ -175,7 +175,6 @@ def eval(root, config, checkpoint_path):
 
     return metrics
 
-
 if __name__ == "__main__":
     ROOT = "/teamspace/studios/this_studio/Relational-Group-Activity-Recognition"
     CONFIG_PATH = f"{ROOT}/configs/B1.yml"

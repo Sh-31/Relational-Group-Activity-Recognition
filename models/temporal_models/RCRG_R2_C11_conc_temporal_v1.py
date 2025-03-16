@@ -3,8 +3,9 @@ RCRG-R2-C11-conc-temporal-V1 (RCRG-2R-11C-conc) Description:
 --------------------------------
 Uses 2 relational layers (2R) of sizes 256 and 128. 
 The graphs of these 2 layers are 1 clique (11C) of all people. 
-- conc: postfix is used to indicate concatenation pooling instead of max-pooling.
-- temporal: postfix is used to indicate model work with seqance of frames not a frame
+
+- Conc: postfix is used to indicate concatenation pooling instead of max-pooling.
+- Temporal: postfix is used to indicate model work with seqance of frames not a frame.
 - V1: postfix is used to indicate the lstm unit is used before the relational layers.
 """
 import sys
