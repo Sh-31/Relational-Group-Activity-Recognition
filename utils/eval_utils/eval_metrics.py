@@ -1,5 +1,6 @@
 import logging
 import torch
+from torch.utils.data import DataLoader
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, classification_report, f1_score
@@ -98,4 +99,119 @@ def model_eval(model, data_loader, criterion=None, path="", device=None, prefix=
         "classification_report": report_dict,
     }
     return metrics
+
+def model_eval_TTA(
+    model, 
+    dataset, 
+    dataset_params, 
+    tta_transforms, 
+    criterion=None, 
+    path="", 
+    device=None, 
+    prefix="Group Activity Test Set Classification Report", 
+    class_names=None, 
+    log_path="TTA-evaluation.log"
+    ):
+
+    logging.basicConfig(
+        filename=f"{path}/{log_path}", 
+        level=logging.INFO, 
+        format='%(asctime)s - %(message)s', 
+        filemode='a'
+    )
+
+    model.eval()
+    all_predictions = []
+    all_targets = []
+
+    total_loss = 0.0
+
+    for transform_idx, transform in enumerate(tta_transforms):
+        print(f"Processing TTA transform {transform_idx+1}/{len(tta_transforms)}")
+        
+        params = dataset_params.copy()
+        params['transform'] = transform
+        
+        test_dataset = dataset(
+            videos_path=params['videos_path'],
+            annot_path=params['annot_path'],
+            split=params['split'],
+            labels=params['labels'],
+            transform=params['transform'],
+            seq=params.get('seq', True),
+            sort=params.get('sort', True),
+            only_tar=params.get('only_tar', False)
+        )
+        
+        test_loader = DataLoader(
+            test_dataset,
+            batch_size=params.get('batch_size', 12),
+            shuffle=False,  # to keep order consistent
+            # num_workers=params.get('num_workers', 1),
+            collate_fn=params.get('collate_fn', None),
+            # pin_memory=params.get('pin_memory', True)
+        )
+        
+        import itertools
+
+        test_loader = itertools.islice(test_loader, 10)  # Limit to 5 batches
+
+        transform_predictions = []
+        transform_targets = []
     
+        with torch.no_grad():
+            for batch_idx, (inputs, targets) in enumerate(test_loader):
+                inputs = inputs.to(device)
+                targets = targets.to(device)  
+                
+                outputs = model(inputs)
+                
+                transform_predictions.extend(outputs.cpu().tolist())
+                transform_targets.extend(targets.cpu().tolist())
+
+        all_predictions.append(torch.tensor(transform_predictions))
+        all_targets.append(torch.tensor(transform_targets))
+
+    # Convert predictions and targets to tensors
+    avg_predictions = torch.mean(torch.stack(all_predictions), dim=0) # (len(test_dataset), 8)
+    all_targets = torch.tensor(all_targets[0].clone().detach()) # all_targets are same in dataloader (len_testset, 8)
+
+    if criterion:
+        avg_predictions_device = avg_predictions.to(device)
+        all_targets_device = all_targets.to(device)
+        loss = criterion(avg_predictions_device, all_targets_device)
+        total_loss = loss.item() * all_targets.size(0)
+
+    _, all_targets = all_targets.max(1)   # (len(test_dataset), 1)
+    _, predicted = avg_predictions.max(1) # (len(test_dataset), 1)
+    
+    y_true = all_targets.cpu().numpy()
+    y_pred = predicted.cpu().numpy()
+    
+    report_dict = classification_report(y_true, y_pred, target_names=class_names, output_dict=True)
+    accuracy = report_dict.get("accuracy", 0) * 100
+ 
+    avg_loss = total_loss / len(y_true) if criterion else None
+    f1 = f1_score(y_true, y_pred, average='weighted')
+
+    log_message = f"\n{'=' * 50}\n{prefix} (with TTA - {len(tta_transforms)} transforms)\n{'=' * 50}\n" \
+                  f"Accuracy : {accuracy:.2f}%\n"
+    if criterion:
+        log_message += f"Average Loss: {avg_loss:.4f}\n"
+    log_message += f"F1 Score (Weighted): {f1:.4f}\n\nClassification Report:\n"
+    log_message += classification_report(y_true, y_pred, target_names=class_names)
+    
+    print(log_message)
+    logging.info(log_message)
+
+    if class_names:
+        save_path = f"{path}/{prefix.replace(' ', '_')}_TTA_confusion_matrix.png"
+        plot_confusion_matrix(y_true, y_pred, class_names=class_names, save_path=save_path)
+    
+    metrics = {
+        "accuracy": accuracy,
+        "avg_loss": avg_loss,
+        "f1_score": f1,
+        "classification_report": report_dict,
+    }
+    return metrics
