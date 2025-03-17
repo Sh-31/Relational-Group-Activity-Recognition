@@ -1,0 +1,449 @@
+2025-03-10 07:07:22,188 - INFO - Starting experiment: RCRG_R2_C11_conc_temporal_V1
+2025-03-10 07:07:22,188 - INFO - Using optimizer: AdamW, lr: 1e-05, momentum: 0, weight_decay: 1
+2025-03-10 07:07:22,188 - INFO - Using device: cuda:0
+2025-03-10 07:07:22,189 - INFO - World Size: 2
+2025-03-10 07:07:22,192 - INFO - Set random seed: 31
+2025-03-10 07:07:22,193 - INFO - Starting training...
+2025-03-10 07:07:22,193 - INFO - Training dataset size: 2152
+2025-03-10 07:07:22,193 - INFO - Validation dataset size: 1341
+2025-03-10 07:07:22,193 - INFO - 
+Epoch 1/40
+2025-03-10 07:09:29,557 - INFO - Epoch: 0 | Batch: 50/269 | Loss: 1.6145 | Acc: 12.75%
+2025-03-10 07:10:45,086 - INFO - Epoch: 0 | Batch: 100/269 | Loss: 2.6877 | Acc: 14.36%
+2025-03-10 07:12:03,650 - INFO - Epoch: 0 | Batch: 150/269 | Loss: 1.8687 | Acc: 16.23%
+2025-03-10 07:13:18,232 - INFO - Epoch: 0 | Batch: 200/269 | Loss: 2.3671 | Acc: 17.41%
+2025-03-10 07:14:37,009 - INFO - Epoch: 0 | Batch: 250/269 | Loss: 2.1293 | Acc: 17.83%
+2025-03-10 07:20:08,504 - INFO - Epoch 0 | Train Loss: 2.0856 | Train Accuracy: 19.14%
+2025-03-10 07:20:08,504 - INFO - Epoch 0 | Valid Loss: 1.8078 | Valid Accuracy: 56.26% | Valid F1 Score: 0.5575
+2025-03-10 07:20:09,071 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_0.pkl
+2025-03-10 07:20:09,071 - INFO - Current learning rate: 1e-05
+2025-03-10 07:20:09,072 - INFO - 
+Epoch 2/40
+2025-03-10 07:22:15,667 - INFO - Epoch: 1 | Batch: 50/269 | Loss: 2.1537 | Acc: 31.86%
+2025-03-10 07:23:33,569 - INFO - Epoch: 1 | Batch: 100/269 | Loss: 1.8129 | Acc: 32.43%
+2025-03-10 07:24:53,754 - INFO - Epoch: 1 | Batch: 150/269 | Loss: 1.3422 | Acc: 34.27%
+2025-03-10 07:26:17,311 - INFO - Epoch: 1 | Batch: 200/269 | Loss: 1.8188 | Acc: 36.82%
+2025-03-10 07:27:36,968 - INFO - Epoch: 1 | Batch: 250/269 | Loss: 1.7365 | Acc: 37.65%
+2025-03-10 07:33:08,259 - INFO - Epoch 1 | Train Loss: 1.7460 | Train Accuracy: 37.73%
+2025-03-10 07:33:08,259 - INFO - Epoch 1 | Valid Loss: 1.4968 | Valid Accuracy: 70.79% | Valid F1 Score: 0.7041
+2025-03-10 07:33:08,809 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_1.pkl
+2025-03-10 07:33:08,810 - INFO - Current learning rate: 1e-05
+2025-03-10 07:33:08,810 - INFO - 
+Epoch 3/40
+2025-03-10 07:35:16,932 - INFO - Epoch: 2 | Batch: 50/269 | Loss: 1.6592 | Acc: 41.18%
+2025-03-10 07:36:35,059 - INFO - Epoch: 2 | Batch: 100/269 | Loss: 2.0549 | Acc: 44.31%
+2025-03-10 07:37:52,021 - INFO - Epoch: 2 | Batch: 150/269 | Loss: 1.7374 | Acc: 45.70%
+2025-03-10 07:39:14,700 - INFO - Epoch: 2 | Batch: 200/269 | Loss: 1.2183 | Acc: 48.13%
+2025-03-10 07:40:34,112 - INFO - Epoch: 2 | Batch: 250/269 | Loss: 0.8220 | Acc: 49.10%
+2025-03-10 07:46:06,480 - INFO - Epoch 2 | Train Loss: 1.5099 | Train Accuracy: 50.05%
+2025-03-10 07:46:06,484 - INFO - Epoch 2 | Valid Loss: 1.3105 | Valid Accuracy: 75.56% | Valid F1 Score: 0.7412
+2025-03-10 07:46:07,450 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_2.pkl
+2025-03-10 07:46:07,451 - INFO - Current learning rate: 1e-05
+2025-03-10 07:46:07,452 - INFO - 
+Epoch 4/40
+2025-03-10 07:48:17,344 - INFO - Epoch: 3 | Batch: 50/269 | Loss: 0.7482 | Acc: 53.43%
+2025-03-10 07:49:35,921 - INFO - Epoch: 3 | Batch: 100/269 | Loss: 1.2465 | Acc: 54.46%
+2025-03-10 07:50:53,341 - INFO - Epoch: 3 | Batch: 150/269 | Loss: 1.7713 | Acc: 55.30%
+2025-03-10 07:52:14,228 - INFO - Epoch: 3 | Batch: 200/269 | Loss: 1.5077 | Acc: 57.59%
+2025-03-10 07:53:33,791 - INFO - Epoch: 3 | Batch: 250/269 | Loss: 1.1112 | Acc: 59.16%
+2025-03-10 07:59:03,964 - INFO - Epoch 3 | Train Loss: 1.3160 | Train Accuracy: 59.43%
+2025-03-10 07:59:03,967 - INFO - Epoch 3 | Valid Loss: 1.1343 | Valid Accuracy: 79.73% | Valid F1 Score: 0.7890
+2025-03-10 07:59:04,511 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_3.pkl
+2025-03-10 07:59:04,512 - INFO - Current learning rate: 1e-05
+2025-03-10 07:59:04,512 - INFO - 
+Epoch 5/40
+2025-03-10 08:01:15,143 - INFO - Epoch: 4 | Batch: 50/269 | Loss: 1.0101 | Acc: 68.14%
+2025-03-10 08:02:34,726 - INFO - Epoch: 4 | Batch: 100/269 | Loss: 1.2679 | Acc: 62.87%
+2025-03-10 08:03:52,490 - INFO - Epoch: 4 | Batch: 150/269 | Loss: 0.8680 | Acc: 63.91%
+2025-03-10 08:05:14,560 - INFO - Epoch: 4 | Batch: 200/269 | Loss: 0.9284 | Acc: 63.81%
+2025-03-10 08:06:37,889 - INFO - Epoch: 4 | Batch: 250/269 | Loss: 0.9870 | Acc: 64.24%
+2025-03-10 08:12:08,415 - INFO - Epoch 4 | Train Loss: 1.1587 | Train Accuracy: 65.20%
+2025-03-10 08:12:08,417 - INFO - Epoch 4 | Valid Loss: 1.0038 | Valid Accuracy: 79.21% | Valid F1 Score: 0.7585
+2025-03-10 08:12:09,080 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_4.pkl
+2025-03-10 08:12:09,081 - INFO - Current learning rate: 1e-05
+2025-03-10 08:12:09,082 - INFO - 
+Epoch 6/40
+2025-03-10 08:14:17,936 - INFO - Epoch: 5 | Batch: 50/269 | Loss: 1.5355 | Acc: 66.67%
+2025-03-10 08:15:39,562 - INFO - Epoch: 5 | Batch: 100/269 | Loss: 1.0716 | Acc: 66.58%
+2025-03-10 08:16:57,070 - INFO - Epoch: 5 | Batch: 150/269 | Loss: 0.6558 | Acc: 68.05%
+2025-03-10 08:18:16,843 - INFO - Epoch: 5 | Batch: 200/269 | Loss: 0.7020 | Acc: 67.41%
+2025-03-10 08:19:40,371 - INFO - Epoch: 5 | Batch: 250/269 | Loss: 0.9091 | Acc: 67.43%
+2025-03-10 08:25:11,441 - INFO - Epoch 5 | Train Loss: 1.0632 | Train Accuracy: 68.59%
+2025-03-10 08:25:11,445 - INFO - Epoch 5 | Valid Loss: 0.8978 | Valid Accuracy: 79.21% | Valid F1 Score: 0.7728
+2025-03-10 08:25:12,002 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_5.pkl
+2025-03-10 08:25:12,003 - INFO - Current learning rate: 1e-05
+2025-03-10 08:25:12,003 - INFO - 
+Epoch 7/40
+2025-03-10 08:27:23,022 - INFO - Epoch: 6 | Batch: 50/269 | Loss: 1.0769 | Acc: 70.59%
+2025-03-10 08:28:45,990 - INFO - Epoch: 6 | Batch: 100/269 | Loss: 0.6563 | Acc: 69.55%
+2025-03-10 08:30:04,570 - INFO - Epoch: 6 | Batch: 150/269 | Loss: 1.9876 | Acc: 69.70%
+2025-03-10 08:31:27,777 - INFO - Epoch: 6 | Batch: 200/269 | Loss: 0.5004 | Acc: 70.52%
+2025-03-10 08:32:50,598 - INFO - Epoch: 6 | Batch: 250/269 | Loss: 1.2859 | Acc: 71.51%
+2025-03-10 08:38:23,670 - INFO - Epoch 6 | Train Loss: 0.9760 | Train Accuracy: 71.65%
+2025-03-10 08:38:23,670 - INFO - Epoch 6 | Valid Loss: 0.8548 | Valid Accuracy: 80.33% | Valid F1 Score: 0.7684
+2025-03-10 08:38:24,225 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_6.pkl
+2025-03-10 08:38:24,225 - INFO - Current learning rate: 1e-05
+2025-03-10 08:38:24,226 - INFO - 
+Epoch 8/40
+2025-03-10 08:40:35,838 - INFO - Epoch: 7 | Batch: 50/269 | Loss: 0.6234 | Acc: 62.75%
+2025-03-10 08:41:58,482 - INFO - Epoch: 7 | Batch: 100/269 | Loss: 0.7296 | Acc: 70.05%
+2025-03-10 08:43:17,061 - INFO - Epoch: 7 | Batch: 150/269 | Loss: 1.1437 | Acc: 71.19%
+2025-03-10 08:44:36,895 - INFO - Epoch: 7 | Batch: 200/269 | Loss: 0.6767 | Acc: 73.51%
+2025-03-10 08:45:58,622 - INFO - Epoch: 7 | Batch: 250/269 | Loss: 0.7253 | Acc: 74.20%
+2025-03-10 08:51:29,857 - INFO - Epoch 7 | Train Loss: 0.9105 | Train Accuracy: 73.93%
+2025-03-10 08:51:29,861 - INFO - Epoch 7 | Valid Loss: 0.7797 | Valid Accuracy: 82.04% | Valid F1 Score: 0.7967
+2025-03-10 08:51:30,429 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_7.pkl
+2025-03-10 08:51:30,430 - INFO - Current learning rate: 1e-05
+2025-03-10 08:51:30,431 - INFO - 
+Epoch 9/40
+2025-03-10 08:53:39,073 - INFO - Epoch: 8 | Batch: 50/269 | Loss: 0.6483 | Acc: 77.45%
+2025-03-10 08:54:58,420 - INFO - Epoch: 8 | Batch: 100/269 | Loss: 1.7162 | Acc: 74.01%
+2025-03-10 08:56:21,109 - INFO - Epoch: 8 | Batch: 150/269 | Loss: 0.2951 | Acc: 74.83%
+2025-03-10 08:57:40,772 - INFO - Epoch: 8 | Batch: 200/269 | Loss: 0.7583 | Acc: 75.00%
+2025-03-10 08:59:04,241 - INFO - Epoch: 8 | Batch: 250/269 | Loss: 0.9512 | Acc: 75.70%
+2025-03-10 09:04:32,956 - INFO - Epoch 8 | Train Loss: 0.8668 | Train Accuracy: 76.07%
+2025-03-10 09:04:32,976 - INFO - Epoch 8 | Valid Loss: 0.7484 | Valid Accuracy: 81.59% | Valid F1 Score: 0.7945
+2025-03-10 09:04:33,558 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_8.pkl
+2025-03-10 09:04:33,559 - INFO - Current learning rate: 1e-05
+2025-03-10 09:04:33,559 - INFO - 
+Epoch 10/40
+2025-03-10 09:06:42,290 - INFO - Epoch: 9 | Batch: 50/269 | Loss: 0.6911 | Acc: 77.94%
+2025-03-10 09:08:04,784 - INFO - Epoch: 9 | Batch: 100/269 | Loss: 0.8522 | Acc: 76.98%
+2025-03-10 09:09:25,781 - INFO - Epoch: 9 | Batch: 150/269 | Loss: 1.1949 | Acc: 77.15%
+2025-03-10 09:10:48,936 - INFO - Epoch: 9 | Batch: 200/269 | Loss: 1.4298 | Acc: 77.36%
+2025-03-10 09:12:12,389 - INFO - Epoch: 9 | Batch: 250/269 | Loss: 1.8930 | Acc: 77.79%
+2025-03-10 09:17:43,167 - INFO - Epoch 9 | Train Loss: 0.7719 | Train Accuracy: 79.97%
+2025-03-10 09:17:43,167 - INFO - Epoch 9 | Valid Loss: 0.7743 | Valid Accuracy: 82.56% | Valid F1 Score: 0.8212
+2025-03-10 09:17:43,715 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_9.pkl
+2025-03-10 09:17:43,716 - INFO - Current learning rate: 1e-05
+2025-03-10 09:17:43,716 - INFO - 
+Epoch 11/40
+2025-03-10 09:19:53,890 - INFO - Epoch: 10 | Batch: 50/269 | Loss: 1.1788 | Acc: 74.51%
+2025-03-10 09:21:14,366 - INFO - Epoch: 10 | Batch: 100/269 | Loss: 1.3847 | Acc: 78.47%
+2025-03-10 09:22:34,656 - INFO - Epoch: 10 | Batch: 150/269 | Loss: 0.7013 | Acc: 77.81%
+2025-03-10 09:23:57,675 - INFO - Epoch: 10 | Batch: 200/269 | Loss: 1.2381 | Acc: 78.11%
+2025-03-10 09:25:20,467 - INFO - Epoch: 10 | Batch: 250/269 | Loss: 0.9223 | Acc: 78.88%
+2025-03-10 09:30:50,163 - INFO - Epoch 10 | Train Loss: 0.7675 | Train Accuracy: 79.46%
+2025-03-10 09:30:50,175 - INFO - Epoch 10 | Valid Loss: 0.6691 | Valid Accuracy: 83.90% | Valid F1 Score: 0.8391
+2025-03-10 09:30:51,036 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_10.pkl
+2025-03-10 09:30:51,037 - INFO - Current learning rate: 1e-05
+2025-03-10 09:30:51,038 - INFO - 
+Epoch 12/40
+2025-03-10 09:32:59,169 - INFO - Epoch: 11 | Batch: 50/269 | Loss: 0.3124 | Acc: 78.92%
+2025-03-10 09:34:19,647 - INFO - Epoch: 11 | Batch: 100/269 | Loss: 0.3960 | Acc: 81.44%
+2025-03-10 09:35:42,429 - INFO - Epoch: 11 | Batch: 150/269 | Loss: 1.0104 | Acc: 80.79%
+2025-03-10 09:37:04,323 - INFO - Epoch: 11 | Batch: 200/269 | Loss: 0.4764 | Acc: 80.35%
+2025-03-10 09:38:27,227 - INFO - Epoch: 11 | Batch: 250/269 | Loss: 0.3263 | Acc: 80.88%
+2025-03-10 09:43:54,137 - INFO - Epoch 11 | Train Loss: 0.7077 | Train Accuracy: 82.02%
+2025-03-10 09:43:54,144 - INFO - Epoch 11 | Valid Loss: 0.6604 | Valid Accuracy: 85.99% | Valid F1 Score: 0.8548
+2025-03-10 09:43:54,989 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_11.pkl
+2025-03-10 09:43:54,990 - INFO - Current learning rate: 1e-05
+2025-03-10 09:43:54,992 - INFO - 
+Epoch 13/40
+2025-03-10 09:46:05,829 - INFO - Epoch: 12 | Batch: 50/269 | Loss: 0.8770 | Acc: 78.92%
+2025-03-10 09:47:28,671 - INFO - Epoch: 12 | Batch: 100/269 | Loss: 0.8445 | Acc: 77.97%
+2025-03-10 09:48:46,584 - INFO - Epoch: 12 | Batch: 150/269 | Loss: 1.0928 | Acc: 78.64%
+2025-03-10 09:50:07,673 - INFO - Epoch: 12 | Batch: 200/269 | Loss: 0.6195 | Acc: 78.98%
+2025-03-10 09:51:29,954 - INFO - Epoch: 12 | Batch: 250/269 | Loss: 0.4351 | Acc: 80.28%
+2025-03-10 09:57:00,285 - INFO - Epoch 12 | Train Loss: 0.7022 | Train Accuracy: 81.78%
+2025-03-10 09:57:00,285 - INFO - Epoch 12 | Valid Loss: 0.6345 | Valid Accuracy: 85.84% | Valid F1 Score: 0.8485
+2025-03-10 09:57:00,956 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_12.pkl
+2025-03-10 09:57:00,957 - INFO - Current learning rate: 1e-05
+2025-03-10 09:57:00,958 - INFO - 
+Epoch 14/40
+2025-03-10 09:59:10,780 - INFO - Epoch: 13 | Batch: 50/269 | Loss: 1.3326 | Acc: 85.78%
+2025-03-10 10:00:31,059 - INFO - Epoch: 13 | Batch: 100/269 | Loss: 0.9065 | Acc: 84.65%
+2025-03-10 10:01:49,748 - INFO - Epoch: 13 | Batch: 150/269 | Loss: 0.2672 | Acc: 84.77%
+2025-03-10 10:03:12,820 - INFO - Epoch: 13 | Batch: 200/269 | Loss: 1.0029 | Acc: 84.70%
+2025-03-10 10:04:35,288 - INFO - Epoch: 13 | Batch: 250/269 | Loss: 0.4049 | Acc: 84.96%
+2025-03-10 10:10:03,505 - INFO - Epoch 13 | Train Loss: 0.6328 | Train Accuracy: 83.83%
+2025-03-10 10:10:03,506 - INFO - Epoch 13 | Valid Loss: 0.6424 | Valid Accuracy: 85.02% | Valid F1 Score: 0.8480
+2025-03-10 10:10:04,055 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_13.pkl
+2025-03-10 10:10:04,056 - INFO - Current learning rate: 1e-05
+2025-03-10 10:10:04,056 - INFO - 
+Epoch 15/40
+2025-03-10 10:12:14,585 - INFO - Epoch: 14 | Batch: 50/269 | Loss: 1.1751 | Acc: 83.33%
+2025-03-10 10:13:35,930 - INFO - Epoch: 14 | Batch: 100/269 | Loss: 0.9405 | Acc: 84.16%
+2025-03-10 10:14:53,158 - INFO - Epoch: 14 | Batch: 150/269 | Loss: 0.7391 | Acc: 84.60%
+2025-03-10 10:16:15,960 - INFO - Epoch: 14 | Batch: 200/269 | Loss: 0.4107 | Acc: 85.45%
+2025-03-10 10:17:36,885 - INFO - Epoch: 14 | Batch: 250/269 | Loss: 0.4709 | Acc: 86.06%
+2025-03-10 10:23:05,800 - INFO - Epoch 14 | Train Loss: 0.6162 | Train Accuracy: 85.46%
+2025-03-10 10:23:05,810 - INFO - Epoch 14 | Valid Loss: 0.6424 | Valid Accuracy: 85.47% | Valid F1 Score: 0.8588
+2025-03-10 10:23:06,368 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_14.pkl
+2025-03-10 10:23:06,369 - INFO - Current learning rate: 1e-05
+2025-03-10 10:23:06,370 - INFO - 
+Epoch 16/40
+2025-03-10 10:25:13,669 - INFO - Epoch: 15 | Batch: 50/269 | Loss: 0.1552 | Acc: 87.75%
+2025-03-10 10:26:33,808 - INFO - Epoch: 15 | Batch: 100/269 | Loss: 0.5475 | Acc: 87.13%
+2025-03-10 10:27:52,618 - INFO - Epoch: 15 | Batch: 150/269 | Loss: 0.4536 | Acc: 87.09%
+2025-03-10 10:29:13,128 - INFO - Epoch: 15 | Batch: 200/269 | Loss: 0.3887 | Acc: 86.94%
+2025-03-10 10:30:33,439 - INFO - Epoch: 15 | Batch: 250/269 | Loss: 1.2804 | Acc: 86.25%
+2025-03-10 10:36:06,795 - INFO - Epoch 15 | Train Loss: 0.6014 | Train Accuracy: 85.64%
+2025-03-10 10:36:06,799 - INFO - Epoch 15 | Valid Loss: 0.5976 | Valid Accuracy: 87.93% | Valid F1 Score: 0.8759
+2025-03-10 10:36:07,364 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_15.pkl
+2025-03-10 10:36:07,365 - INFO - Current learning rate: 1e-05
+2025-03-10 10:36:07,366 - INFO - 
+Epoch 17/40
+2025-03-10 10:38:16,130 - INFO - Epoch: 16 | Batch: 50/269 | Loss: 0.6521 | Acc: 88.24%
+2025-03-10 10:39:36,061 - INFO - Epoch: 16 | Batch: 100/269 | Loss: 0.7243 | Acc: 87.13%
+2025-03-10 10:40:57,505 - INFO - Epoch: 16 | Batch: 150/269 | Loss: 0.1760 | Acc: 87.58%
+2025-03-10 10:42:18,789 - INFO - Epoch: 16 | Batch: 200/269 | Loss: 0.3084 | Acc: 86.94%
+2025-03-10 10:43:38,597 - INFO - Epoch: 16 | Batch: 250/269 | Loss: 0.6374 | Acc: 87.45%
+2025-03-10 10:49:10,293 - INFO - Epoch 16 | Train Loss: 0.5601 | Train Accuracy: 87.55%
+2025-03-10 10:49:10,304 - INFO - Epoch 16 | Valid Loss: 0.5753 | Valid Accuracy: 88.67% | Valid F1 Score: 0.8851
+2025-03-10 10:49:11,197 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_16.pkl
+2025-03-10 10:49:11,198 - INFO - Current learning rate: 1e-05
+2025-03-10 10:49:11,198 - INFO - 
+Epoch 18/40
+2025-03-10 10:51:18,851 - INFO - Epoch: 17 | Batch: 50/269 | Loss: 0.2158 | Acc: 88.73%
+2025-03-10 10:52:38,283 - INFO - Epoch: 17 | Batch: 100/269 | Loss: 1.2242 | Acc: 85.64%
+2025-03-10 10:53:55,833 - INFO - Epoch: 17 | Batch: 150/269 | Loss: 0.6533 | Acc: 86.09%
+2025-03-10 10:55:18,411 - INFO - Epoch: 17 | Batch: 200/269 | Loss: 0.3549 | Acc: 87.94%
+2025-03-10 10:56:38,373 - INFO - Epoch: 17 | Batch: 250/269 | Loss: 0.2621 | Acc: 88.25%
+2025-03-10 11:02:09,296 - INFO - Epoch 17 | Train Loss: 0.5326 | Train Accuracy: 88.48%
+2025-03-10 11:02:09,311 - INFO - Epoch 17 | Valid Loss: 0.6012 | Valid Accuracy: 88.52% | Valid F1 Score: 0.8840
+2025-03-10 11:02:09,869 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_17.pkl
+2025-03-10 11:02:09,870 - INFO - Current learning rate: 1e-05
+2025-03-10 11:02:09,870 - INFO - 
+Epoch 19/40
+2025-03-10 11:04:18,697 - INFO - Epoch: 18 | Batch: 50/269 | Loss: 1.0348 | Acc: 84.31%
+2025-03-10 11:05:38,708 - INFO - Epoch: 18 | Batch: 100/269 | Loss: 0.2709 | Acc: 86.39%
+2025-03-10 11:06:58,396 - INFO - Epoch: 18 | Batch: 150/269 | Loss: 0.2327 | Acc: 87.91%
+2025-03-10 11:08:15,421 - INFO - Epoch: 18 | Batch: 200/269 | Loss: 0.4094 | Acc: 88.43%
+2025-03-10 11:09:36,840 - INFO - Epoch: 18 | Batch: 250/269 | Loss: 0.1958 | Acc: 88.45%
+2025-03-10 11:15:06,912 - INFO - Epoch 18 | Train Loss: 0.5358 | Train Accuracy: 88.29%
+2025-03-10 11:15:06,912 - INFO - Epoch 18 | Valid Loss: 0.5793 | Valid Accuracy: 88.15% | Valid F1 Score: 0.8673
+2025-03-10 11:15:07,505 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_18.pkl
+2025-03-10 11:15:07,506 - INFO - Current learning rate: 1e-05
+2025-03-10 11:15:07,507 - INFO - 
+Epoch 20/40
+2025-03-10 11:17:14,114 - INFO - Epoch: 19 | Batch: 50/269 | Loss: 0.3143 | Acc: 90.20%
+2025-03-10 11:18:32,897 - INFO - Epoch: 19 | Batch: 100/269 | Loss: 0.7879 | Acc: 89.85%
+2025-03-10 11:19:51,725 - INFO - Epoch: 19 | Batch: 150/269 | Loss: 0.4193 | Acc: 88.74%
+2025-03-10 11:21:14,481 - INFO - Epoch: 19 | Batch: 200/269 | Loss: 0.2680 | Acc: 89.18%
+2025-03-10 11:22:33,941 - INFO - Epoch: 19 | Batch: 250/269 | Loss: 1.2780 | Acc: 90.04%
+2025-03-10 11:28:03,273 - INFO - Epoch 19 | Train Loss: 0.5012 | Train Accuracy: 88.94%
+2025-03-10 11:28:03,288 - INFO - Epoch 19 | Valid Loss: 0.5553 | Valid Accuracy: 88.23% | Valid F1 Score: 0.8837
+2025-03-10 11:28:04,185 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_19.pkl
+2025-03-10 11:28:04,186 - INFO - Current learning rate: 1e-05
+2025-03-10 11:28:04,186 - INFO - 
+Epoch 21/40
+2025-03-10 11:30:12,621 - INFO - Epoch: 20 | Batch: 50/269 | Loss: 0.1458 | Acc: 88.24%
+2025-03-10 11:31:33,012 - INFO - Epoch: 20 | Batch: 100/269 | Loss: 0.3449 | Acc: 89.85%
+2025-03-10 11:32:52,161 - INFO - Epoch: 20 | Batch: 150/269 | Loss: 0.7843 | Acc: 90.23%
+2025-03-10 11:34:14,000 - INFO - Epoch: 20 | Batch: 200/269 | Loss: 0.6124 | Acc: 90.42%
+2025-03-10 11:35:32,286 - INFO - Epoch: 20 | Batch: 250/269 | Loss: 0.4201 | Acc: 90.74%
+2025-03-10 11:41:02,038 - INFO - Epoch 20 | Train Loss: 0.4792 | Train Accuracy: 89.92%
+2025-03-10 11:41:02,041 - INFO - Epoch 20 | Valid Loss: 0.5500 | Valid Accuracy: 87.41% | Valid F1 Score: 0.8762
+2025-03-10 11:41:02,592 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_20.pkl
+2025-03-10 11:41:02,593 - INFO - Current learning rate: 1e-05
+2025-03-10 11:41:02,593 - INFO - 
+Epoch 22/40
+2025-03-10 11:43:10,168 - INFO - Epoch: 21 | Batch: 50/269 | Loss: 0.1440 | Acc: 91.18%
+2025-03-10 11:44:26,902 - INFO - Epoch: 21 | Batch: 100/269 | Loss: 2.7919 | Acc: 91.58%
+2025-03-10 11:45:44,531 - INFO - Epoch: 21 | Batch: 150/269 | Loss: 0.1735 | Acc: 91.06%
+2025-03-10 11:47:06,177 - INFO - Epoch: 21 | Batch: 200/269 | Loss: 0.2145 | Acc: 91.29%
+2025-03-10 11:48:24,736 - INFO - Epoch: 21 | Batch: 250/269 | Loss: 0.6171 | Acc: 90.84%
+2025-03-10 11:53:55,594 - INFO - Epoch 21 | Train Loss: 0.4710 | Train Accuracy: 90.38%
+2025-03-10 11:53:55,595 - INFO - Epoch 21 | Valid Loss: 0.5412 | Valid Accuracy: 88.60% | Valid F1 Score: 0.8927
+2025-03-10 11:53:56,446 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_21.pkl
+2025-03-10 11:53:56,447 - INFO - Current learning rate: 1e-05
+2025-03-10 11:53:56,447 - INFO - 
+Epoch 23/40
+2025-03-10 11:56:03,319 - INFO - Epoch: 22 | Batch: 50/269 | Loss: 0.2428 | Acc: 88.24%
+2025-03-10 11:57:19,935 - INFO - Epoch: 22 | Batch: 100/269 | Loss: 0.3562 | Acc: 87.87%
+2025-03-10 11:58:39,827 - INFO - Epoch: 22 | Batch: 150/269 | Loss: 2.0844 | Acc: 88.25%
+2025-03-10 11:59:58,709 - INFO - Epoch: 22 | Batch: 200/269 | Loss: 0.2027 | Acc: 89.30%
+2025-03-10 12:01:20,002 - INFO - Epoch: 22 | Batch: 250/269 | Loss: 0.1296 | Acc: 90.14%
+2025-03-10 12:06:49,121 - INFO - Epoch 22 | Train Loss: 0.4539 | Train Accuracy: 90.94%
+2025-03-10 12:06:49,134 - INFO - Epoch 22 | Valid Loss: 0.5323 | Valid Accuracy: 87.78% | Valid F1 Score: 0.8734
+2025-03-10 12:06:50,002 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_22.pkl
+2025-03-10 12:06:50,003 - INFO - Current learning rate: 1e-05
+2025-03-10 12:06:50,004 - INFO - 
+Epoch 24/40
+2025-03-10 12:08:55,805 - INFO - Epoch: 23 | Batch: 50/269 | Loss: 0.4053 | Acc: 86.76%
+2025-03-10 12:10:12,800 - INFO - Epoch: 23 | Batch: 100/269 | Loss: 0.4277 | Acc: 88.12%
+2025-03-10 12:11:31,450 - INFO - Epoch: 23 | Batch: 150/269 | Loss: 0.1800 | Acc: 88.41%
+2025-03-10 12:12:51,937 - INFO - Epoch: 23 | Batch: 200/269 | Loss: 0.3177 | Acc: 89.30%
+2025-03-10 12:14:08,141 - INFO - Epoch: 23 | Batch: 250/269 | Loss: 0.1536 | Acc: 89.34%
+2025-03-10 12:19:39,829 - INFO - Epoch 23 | Train Loss: 0.4395 | Train Accuracy: 90.75%
+2025-03-10 12:19:39,830 - INFO - Epoch 23 | Valid Loss: 0.5465 | Valid Accuracy: 87.26% | Valid F1 Score: 0.8736
+2025-03-10 12:19:40,388 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_23.pkl
+2025-03-10 12:19:40,389 - INFO - Current learning rate: 1e-05
+2025-03-10 12:19:40,390 - INFO - 
+Epoch 25/40
+2025-03-10 12:21:47,430 - INFO - Epoch: 24 | Batch: 50/269 | Loss: 0.6363 | Acc: 88.24%
+2025-03-10 12:23:07,393 - INFO - Epoch: 24 | Batch: 100/269 | Loss: 0.2340 | Acc: 91.09%
+2025-03-10 12:24:25,356 - INFO - Epoch: 24 | Batch: 150/269 | Loss: 0.5225 | Acc: 91.72%
+2025-03-10 12:25:45,281 - INFO - Epoch: 24 | Batch: 200/269 | Loss: 1.0628 | Acc: 91.29%
+2025-03-10 12:27:03,725 - INFO - Epoch: 24 | Batch: 250/269 | Loss: 0.5039 | Acc: 91.33%
+2025-03-10 12:32:34,822 - INFO - Epoch 24 | Train Loss: 0.4220 | Train Accuracy: 91.73%
+2025-03-10 12:32:34,833 - INFO - Epoch 24 | Valid Loss: 0.5440 | Valid Accuracy: 88.15% | Valid F1 Score: 0.8731
+2025-03-10 12:32:35,427 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_24.pkl
+2025-03-10 12:32:35,427 - INFO - Current learning rate: 1e-05
+2025-03-10 12:32:35,428 - INFO - 
+Epoch 26/40
+2025-03-10 12:34:42,924 - INFO - Epoch: 25 | Batch: 50/269 | Loss: 0.5139 | Acc: 92.65%
+2025-03-10 12:36:04,462 - INFO - Epoch: 25 | Batch: 100/269 | Loss: 0.5777 | Acc: 90.59%
+2025-03-10 12:37:19,628 - INFO - Epoch: 25 | Batch: 150/269 | Loss: 0.2365 | Acc: 91.39%
+2025-03-10 12:38:40,620 - INFO - Epoch: 25 | Batch: 200/269 | Loss: 0.2197 | Acc: 92.04%
+2025-03-10 12:39:59,759 - INFO - Epoch: 25 | Batch: 250/269 | Loss: 0.2943 | Acc: 92.13%
+2025-03-10 12:45:30,520 - INFO - Epoch 25 | Train Loss: 0.4201 | Train Accuracy: 91.50%
+2025-03-10 12:45:30,532 - INFO - Epoch 25 | Valid Loss: 0.5312 | Valid Accuracy: 88.30% | Valid F1 Score: 0.8748
+2025-03-10 12:45:31,085 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_25.pkl
+2025-03-10 12:45:31,085 - INFO - Current learning rate: 1e-05
+2025-03-10 12:45:31,086 - INFO - 
+Epoch 27/40
+2025-03-10 12:47:40,063 - INFO - Epoch: 26 | Batch: 50/269 | Loss: 0.3825 | Acc: 93.14%
+2025-03-10 12:49:00,382 - INFO - Epoch: 26 | Batch: 100/269 | Loss: 0.2500 | Acc: 93.07%
+2025-03-10 12:50:18,960 - INFO - Epoch: 26 | Batch: 150/269 | Loss: 0.8158 | Acc: 92.88%
+2025-03-10 12:51:37,572 - INFO - Epoch: 26 | Batch: 200/269 | Loss: 0.3742 | Acc: 93.28%
+2025-03-10 12:52:59,930 - INFO - Epoch: 26 | Batch: 250/269 | Loss: 0.5174 | Acc: 93.43%
+2025-03-10 12:58:29,949 - INFO - Epoch 26 | Train Loss: 0.4121 | Train Accuracy: 92.01%
+2025-03-10 12:58:29,949 - INFO - Epoch 26 | Valid Loss: 0.5203 | Valid Accuracy: 88.52% | Valid F1 Score: 0.8857
+2025-03-10 12:58:30,496 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_26.pkl
+2025-03-10 12:58:30,496 - INFO - Current learning rate: 1e-05
+2025-03-10 12:58:30,497 - INFO - 
+Epoch 28/40
+2025-03-10 13:00:38,041 - INFO - Epoch: 27 | Batch: 50/269 | Loss: 0.3830 | Acc: 95.10%
+2025-03-10 13:01:57,265 - INFO - Epoch: 27 | Batch: 100/269 | Loss: 0.2916 | Acc: 94.80%
+2025-03-10 13:03:17,852 - INFO - Epoch: 27 | Batch: 150/269 | Loss: 0.3617 | Acc: 94.54%
+2025-03-10 13:04:36,247 - INFO - Epoch: 27 | Batch: 200/269 | Loss: 0.4034 | Acc: 93.16%
+2025-03-10 13:05:58,455 - INFO - Epoch: 27 | Batch: 250/269 | Loss: 0.3165 | Acc: 92.53%
+2025-03-10 13:11:27,274 - INFO - Epoch 27 | Train Loss: 0.3918 | Train Accuracy: 92.57%
+2025-03-10 13:11:27,291 - INFO - Epoch 27 | Valid Loss: 0.5039 | Valid Accuracy: 88.75% | Valid F1 Score: 0.8808
+2025-03-10 13:11:28,149 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_27.pkl
+2025-03-10 13:11:28,150 - INFO - Current learning rate: 1e-05
+2025-03-10 13:11:28,151 - INFO - 
+Epoch 29/40
+2025-03-10 13:13:38,252 - INFO - Epoch: 28 | Batch: 50/269 | Loss: 0.2940 | Acc: 91.18%
+2025-03-10 13:14:57,527 - INFO - Epoch: 28 | Batch: 100/269 | Loss: 1.7886 | Acc: 92.33%
+2025-03-10 13:16:18,038 - INFO - Epoch: 28 | Batch: 150/269 | Loss: 0.3082 | Acc: 91.56%
+2025-03-10 13:17:34,733 - INFO - Epoch: 28 | Batch: 200/269 | Loss: 0.2883 | Acc: 91.79%
+2025-03-10 13:18:56,237 - INFO - Epoch: 28 | Batch: 250/269 | Loss: 0.1434 | Acc: 92.43%
+2025-03-10 13:24:27,052 - INFO - Epoch 28 | Train Loss: 0.3915 | Train Accuracy: 93.08%
+2025-03-10 13:24:27,056 - INFO - Epoch 28 | Valid Loss: 0.4981 | Valid Accuracy: 88.15% | Valid F1 Score: 0.8748
+2025-03-10 13:24:27,885 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_28.pkl
+2025-03-10 13:24:27,886 - INFO - Current learning rate: 1e-05
+2025-03-10 13:24:27,887 - INFO - 
+Epoch 30/40
+2025-03-10 13:26:36,281 - INFO - Epoch: 29 | Batch: 50/269 | Loss: 0.9186 | Acc: 94.12%
+2025-03-10 13:27:57,240 - INFO - Epoch: 29 | Batch: 100/269 | Loss: 0.4121 | Acc: 93.32%
+2025-03-10 13:29:16,055 - INFO - Epoch: 29 | Batch: 150/269 | Loss: 0.5686 | Acc: 93.38%
+2025-03-10 13:30:36,583 - INFO - Epoch: 29 | Batch: 200/269 | Loss: 0.4574 | Acc: 93.53%
+2025-03-10 13:31:56,875 - INFO - Epoch: 29 | Batch: 250/269 | Loss: 0.2818 | Acc: 93.63%
+2025-03-10 13:37:24,641 - INFO - Epoch 29 | Train Loss: 0.3735 | Train Accuracy: 93.36%
+2025-03-10 13:37:24,641 - INFO - Epoch 29 | Valid Loss: 0.5140 | Valid Accuracy: 88.38% | Valid F1 Score: 0.8804
+2025-03-10 13:37:25,616 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_29.pkl
+2025-03-10 13:37:25,617 - INFO - Current learning rate: 1e-05
+2025-03-10 13:37:25,618 - INFO - 
+Epoch 31/40
+2025-03-10 13:39:33,353 - INFO - Epoch: 30 | Batch: 50/269 | Loss: 0.1319 | Acc: 89.71%
+2025-03-10 13:40:55,723 - INFO - Epoch: 30 | Batch: 100/269 | Loss: 0.2771 | Acc: 93.32%
+2025-03-10 13:42:13,006 - INFO - Epoch: 30 | Batch: 150/269 | Loss: 1.1663 | Acc: 93.38%
+2025-03-10 13:43:36,036 - INFO - Epoch: 30 | Batch: 200/269 | Loss: 0.1742 | Acc: 93.28%
+2025-03-10 13:44:53,259 - INFO - Epoch: 30 | Batch: 250/269 | Loss: 0.2513 | Acc: 93.03%
+2025-03-10 13:50:23,176 - INFO - Epoch 30 | Train Loss: 0.3762 | Train Accuracy: 93.22%
+2025-03-10 13:50:23,176 - INFO - Epoch 30 | Valid Loss: 0.4859 | Valid Accuracy: 88.38% | Valid F1 Score: 0.8749
+2025-03-10 13:50:23,739 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_30.pkl
+2025-03-10 13:50:23,739 - INFO - Current learning rate: 1e-05
+2025-03-10 13:50:23,740 - INFO - 
+Epoch 32/40
+2025-03-10 13:52:30,157 - INFO - Epoch: 31 | Batch: 50/269 | Loss: 0.2580 | Acc: 95.10%
+2025-03-10 13:53:48,796 - INFO - Epoch: 31 | Batch: 100/269 | Loss: 0.2571 | Acc: 96.29%
+2025-03-10 13:55:05,063 - INFO - Epoch: 31 | Batch: 150/269 | Loss: 0.5889 | Acc: 94.21%
+2025-03-10 13:56:24,380 - INFO - Epoch: 31 | Batch: 200/269 | Loss: 0.2438 | Acc: 94.15%
+2025-03-10 13:57:44,780 - INFO - Epoch: 31 | Batch: 250/269 | Loss: 0.2139 | Acc: 93.33%
+2025-03-10 14:03:16,678 - INFO - Epoch 31 | Train Loss: 0.3555 | Train Accuracy: 93.59%
+2025-03-10 14:03:16,679 - INFO - Epoch 31 | Valid Loss: 0.5072 | Valid Accuracy: 88.00% | Valid F1 Score: 0.8793
+2025-03-10 14:03:17,233 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_31.pkl
+2025-03-10 14:03:17,233 - INFO - Current learning rate: 1e-05
+2025-03-10 14:03:17,234 - INFO - 
+Epoch 33/40
+2025-03-10 14:05:26,955 - INFO - Epoch: 32 | Batch: 50/269 | Loss: 0.1245 | Acc: 96.57%
+2025-03-10 14:06:47,181 - INFO - Epoch: 32 | Batch: 100/269 | Loss: 0.2122 | Acc: 94.80%
+2025-03-10 14:08:06,547 - INFO - Epoch: 32 | Batch: 150/269 | Loss: 0.1610 | Acc: 94.70%
+2025-03-10 14:09:28,375 - INFO - Epoch: 32 | Batch: 200/269 | Loss: 0.2109 | Acc: 94.65%
+2025-03-10 14:10:46,309 - INFO - Epoch: 32 | Batch: 250/269 | Loss: 0.1632 | Acc: 94.52%
+2025-03-10 14:16:17,141 - INFO - Epoch 32 | Train Loss: 0.3284 | Train Accuracy: 94.80%
+2025-03-10 14:16:17,141 - INFO - Epoch 32 | Valid Loss: 0.5162 | Valid Accuracy: 87.93% | Valid F1 Score: 0.8673
+2025-03-10 14:16:17,709 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_32.pkl
+2025-03-10 14:16:17,710 - INFO - Current learning rate: 1e-05
+2025-03-10 14:16:17,711 - INFO - 
+Epoch 34/40
+2025-03-10 14:18:24,818 - INFO - Epoch: 33 | Batch: 50/269 | Loss: 0.2708 | Acc: 92.16%
+2025-03-10 14:19:44,600 - INFO - Epoch: 33 | Batch: 100/269 | Loss: 0.2372 | Acc: 92.08%
+2025-03-10 14:20:59,857 - INFO - Epoch: 33 | Batch: 150/269 | Loss: 0.1436 | Acc: 91.89%
+2025-03-10 14:22:19,341 - INFO - Epoch: 33 | Batch: 200/269 | Loss: 0.2397 | Acc: 92.79%
+2025-03-10 14:23:38,394 - INFO - Epoch: 33 | Batch: 250/269 | Loss: 0.4140 | Acc: 93.23%
+2025-03-10 14:29:10,144 - INFO - Epoch 33 | Train Loss: 0.3494 | Train Accuracy: 93.45%
+2025-03-10 14:29:10,145 - INFO - Epoch 33 | Valid Loss: 0.4810 | Valid Accuracy: 89.12% | Valid F1 Score: 0.8837
+2025-03-10 14:29:10,808 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_33.pkl
+2025-03-10 14:29:10,808 - INFO - Current learning rate: 1e-05
+2025-03-10 14:29:10,809 - INFO - 
+Epoch 35/40
+2025-03-10 14:31:19,320 - INFO - Epoch: 34 | Batch: 50/269 | Loss: 0.1418 | Acc: 91.18%
+2025-03-10 14:32:37,141 - INFO - Epoch: 34 | Batch: 100/269 | Loss: 0.1324 | Acc: 92.33%
+2025-03-10 14:33:55,705 - INFO - Epoch: 34 | Batch: 150/269 | Loss: 0.2570 | Acc: 92.22%
+2025-03-10 14:35:13,228 - INFO - Epoch: 34 | Batch: 200/269 | Loss: 0.2068 | Acc: 93.03%
+2025-03-10 14:36:34,060 - INFO - Epoch: 34 | Batch: 250/269 | Loss: 0.8922 | Acc: 92.73%
+2025-03-10 14:42:02,871 - INFO - Epoch 34 | Train Loss: 0.3633 | Train Accuracy: 92.75%
+2025-03-10 14:42:02,874 - INFO - Epoch 34 | Valid Loss: 0.4923 | Valid Accuracy: 89.12% | Valid F1 Score: 0.8913
+2025-03-10 14:42:03,427 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_34.pkl
+2025-03-10 14:42:03,427 - INFO - Current learning rate: 1e-05
+2025-03-10 14:42:03,428 - INFO - 
+Epoch 36/40
+2025-03-10 14:44:10,400 - INFO - Epoch: 35 | Batch: 50/269 | Loss: 0.2720 | Acc: 91.67%
+2025-03-10 14:45:31,068 - INFO - Epoch: 35 | Batch: 100/269 | Loss: 0.1252 | Acc: 93.07%
+2025-03-10 14:46:47,910 - INFO - Epoch: 35 | Batch: 150/269 | Loss: 0.2417 | Acc: 92.55%
+2025-03-10 14:48:09,756 - INFO - Epoch: 35 | Batch: 200/269 | Loss: 0.3295 | Acc: 93.03%
+2025-03-10 14:49:29,207 - INFO - Epoch: 35 | Batch: 250/269 | Loss: 0.1099 | Acc: 92.63%
+2025-03-10 14:54:57,946 - INFO - Epoch 35 | Train Loss: 0.3529 | Train Accuracy: 93.77%
+2025-03-10 14:54:57,946 - INFO - Epoch 35 | Valid Loss: 0.4946 | Valid Accuracy: 88.30% | Valid F1 Score: 0.8750
+2025-03-10 14:54:58,743 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_35.pkl
+2025-03-10 14:54:58,745 - INFO - Current learning rate: 1e-05
+2025-03-10 14:54:58,746 - INFO - 
+Epoch 37/40
+2025-03-10 14:57:06,013 - INFO - Epoch: 36 | Batch: 50/269 | Loss: 0.3604 | Acc: 89.71%
+2025-03-10 14:58:21,925 - INFO - Epoch: 36 | Batch: 100/269 | Loss: 1.2035 | Acc: 92.57%
+2025-03-10 14:59:39,947 - INFO - Epoch: 36 | Batch: 150/269 | Loss: 0.1455 | Acc: 92.72%
+2025-03-10 15:01:02,286 - INFO - Epoch: 36 | Batch: 200/269 | Loss: 0.5588 | Acc: 93.53%
+2025-03-10 15:02:20,198 - INFO - Epoch: 36 | Batch: 250/269 | Loss: 0.1194 | Acc: 94.02%
+2025-03-10 15:07:50,729 - INFO - Epoch 36 | Train Loss: 0.3126 | Train Accuracy: 94.66%
+2025-03-10 15:07:50,732 - INFO - Epoch 36 | Valid Loss: 0.4898 | Valid Accuracy: 87.93% | Valid F1 Score: 0.8764
+2025-03-10 15:07:51,303 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_36.pkl
+2025-03-10 15:07:51,304 - INFO - Current learning rate: 1e-05
+2025-03-10 15:07:51,304 - INFO - 
+Epoch 38/40
+2025-03-10 15:09:57,522 - INFO - Epoch: 37 | Batch: 50/269 | Loss: 0.2544 | Acc: 95.59%
+2025-03-10 15:11:15,193 - INFO - Epoch: 37 | Batch: 100/269 | Loss: 0.6842 | Acc: 95.05%
+2025-03-10 15:12:32,184 - INFO - Epoch: 37 | Batch: 150/269 | Loss: 0.4357 | Acc: 94.54%
+2025-03-10 15:13:51,832 - INFO - Epoch: 37 | Batch: 200/269 | Loss: 0.1072 | Acc: 94.65%
+2025-03-10 15:15:07,038 - INFO - Epoch: 37 | Batch: 250/269 | Loss: 0.3093 | Acc: 94.62%
+2025-03-10 15:20:37,198 - INFO - Epoch 37 | Train Loss: 0.3213 | Train Accuracy: 94.66%
+2025-03-10 15:20:37,198 - INFO - Epoch 37 | Valid Loss: 0.5073 | Valid Accuracy: 87.56% | Valid F1 Score: 0.8676
+2025-03-10 15:20:37,762 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_37.pkl
+2025-03-10 15:20:37,763 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-10 15:20:37,764 - INFO - 
+Epoch 39/40
+2025-03-10 15:22:42,369 - INFO - Epoch: 38 | Batch: 50/269 | Loss: 0.2180 | Acc: 95.10%
+2025-03-10 15:23:58,843 - INFO - Epoch: 38 | Batch: 100/269 | Loss: 0.1300 | Acc: 95.30%
+2025-03-10 15:25:14,512 - INFO - Epoch: 38 | Batch: 150/269 | Loss: 0.1058 | Acc: 95.20%
+2025-03-10 15:26:33,073 - INFO - Epoch: 38 | Batch: 200/269 | Loss: 0.0960 | Acc: 93.78%
+2025-03-10 15:27:49,546 - INFO - Epoch: 38 | Batch: 250/269 | Loss: 0.1588 | Acc: 94.62%
+2025-03-10 15:33:18,942 - INFO - Epoch 38 | Train Loss: 0.3150 | Train Accuracy: 94.66%
+2025-03-10 15:33:18,943 - INFO - Epoch 38 | Valid Loss: 0.4861 | Valid Accuracy: 88.00% | Valid F1 Score: 0.8704
+2025-03-10 15:33:19,489 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_38.pkl
+2025-03-10 15:33:19,489 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-10 15:33:19,490 - INFO - 
+Epoch 40/40
+2025-03-10 15:35:24,750 - INFO - Epoch: 39 | Batch: 50/269 | Loss: 0.2968 | Acc: 98.04%
+2025-03-10 15:36:42,438 - INFO - Epoch: 39 | Batch: 100/269 | Loss: 0.6650 | Acc: 95.05%
+2025-03-10 15:37:58,415 - INFO - Epoch: 39 | Batch: 150/269 | Loss: 0.1044 | Acc: 94.21%
+2025-03-10 15:39:17,898 - INFO - Epoch: 39 | Batch: 200/269 | Loss: 0.1096 | Acc: 94.40%
+2025-03-10 15:40:36,234 - INFO - Epoch: 39 | Batch: 250/269 | Loss: 0.4359 | Acc: 94.52%
+2025-03-10 15:46:06,553 - INFO - Epoch 39 | Train Loss: 0.3174 | Train Accuracy: 94.75%
+2025-03-10 15:46:06,553 - INFO - Epoch 39 | Valid Loss: 0.4927 | Valid Accuracy: 88.90% | Valid F1 Score: 0.8837
+2025-03-10 15:46:07,109 - INFO - Saved checkpoint at /kaggle/working/Relational-Group-Activity-Recognition/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_39.pkl
+2025-03-10 15:46:07,110 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-10 15:46:07,111 - INFO - Training completed. Best validation accuracy: 89.12%

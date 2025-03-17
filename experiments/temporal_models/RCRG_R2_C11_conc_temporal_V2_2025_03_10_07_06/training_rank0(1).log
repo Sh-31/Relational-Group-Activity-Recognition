@@ -1,0 +1,506 @@
+2025-03-15 05:10:42,467 - INFO - Loaded checkpoint from /kaggle/input/relational-group-activity-recognition/pytorch/v1/1/temporal_models/RCRG_R2_C11_conc_temporal_V2_2025_03_10_07_06/checkpoint_epoch_24.pkl
+2025-03-15 05:10:42,467 - INFO - Resumed training from epoch 25
+2025-03-15 05:10:42,470 - INFO - Starting experiment: RCRG_R2_C11_conc_temporal_V2
+2025-03-15 05:10:42,470 - INFO - Using optimizer: AdamW, lr: 1e-05, momentum: 0, weight_decay: 0.01
+2025-03-15 05:10:42,470 - INFO - Using device: cuda:0
+2025-03-15 05:10:42,470 - INFO - World Size: 2
+2025-03-15 05:10:42,474 - INFO - Set random seed: 31
+2025-03-15 05:10:42,474 - INFO - Starting training...
+2025-03-15 05:10:42,474 - INFO - Training dataset size: 2152
+2025-03-15 05:10:42,474 - INFO - Validation dataset size: 1341
+2025-03-15 05:10:42,475 - INFO - 
+Epoch 26/70
+2025-03-15 05:12:49,871 - INFO - Epoch: 25 | Batch: 50/269 | Loss: 0.4030 | Acc: 93.63%
+2025-03-15 05:14:04,492 - INFO - Epoch: 25 | Batch: 100/269 | Loss: 0.5297 | Acc: 92.33%
+2025-03-15 05:15:25,186 - INFO - Epoch: 25 | Batch: 150/269 | Loss: 0.2651 | Acc: 91.56%
+2025-03-15 05:16:39,240 - INFO - Epoch: 25 | Batch: 200/269 | Loss: 0.3975 | Acc: 92.54%
+2025-03-15 05:17:59,125 - INFO - Epoch: 25 | Batch: 250/269 | Loss: 0.2647 | Acc: 92.63%
+2025-03-15 05:23:21,958 - INFO - Epoch 25 | Train Loss: 0.4016 | Train Accuracy: 92.57%
+2025-03-15 05:23:21,959 - INFO - Epoch 25 | Valid Loss: 0.5101 | Valid Accuracy: 88.97% | Valid F1 Score: 0.8794
+2025-03-15 05:23:22,279 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_25.pkl
+2025-03-15 05:23:22,280 - INFO - Current learning rate: 1e-05
+2025-03-15 05:23:22,281 - INFO - 
+Epoch 27/70
+2025-03-15 05:25:31,243 - INFO - Epoch: 26 | Batch: 50/269 | Loss: 0.5620 | Acc: 94.61%
+2025-03-15 05:26:55,498 - INFO - Epoch: 26 | Batch: 100/269 | Loss: 0.2613 | Acc: 93.32%
+2025-03-15 05:28:13,165 - INFO - Epoch: 26 | Batch: 150/269 | Loss: 0.5770 | Acc: 92.22%
+2025-03-15 05:29:34,792 - INFO - Epoch: 26 | Batch: 200/269 | Loss: 0.4931 | Acc: 92.41%
+2025-03-15 05:30:54,335 - INFO - Epoch: 26 | Batch: 250/269 | Loss: 0.6708 | Acc: 92.83%
+2025-03-15 05:36:12,866 - INFO - Epoch 26 | Train Loss: 0.3718 | Train Accuracy: 93.49%
+2025-03-15 05:36:12,868 - INFO - Epoch 26 | Valid Loss: 0.5167 | Valid Accuracy: 88.45% | Valid F1 Score: 0.8745
+2025-03-15 05:36:13,239 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_26.pkl
+2025-03-15 05:36:13,240 - INFO - Current learning rate: 1e-05
+2025-03-15 05:36:13,241 - INFO - 
+Epoch 28/70
+2025-03-15 05:38:25,014 - INFO - Epoch: 27 | Batch: 50/269 | Loss: 0.3565 | Acc: 94.61%
+2025-03-15 05:39:48,621 - INFO - Epoch: 27 | Batch: 100/269 | Loss: 0.3101 | Acc: 94.80%
+2025-03-15 05:41:05,234 - INFO - Epoch: 27 | Batch: 150/269 | Loss: 0.1785 | Acc: 94.21%
+2025-03-15 05:42:28,306 - INFO - Epoch: 27 | Batch: 200/269 | Loss: 0.3415 | Acc: 93.78%
+2025-03-15 05:43:47,437 - INFO - Epoch: 27 | Batch: 250/269 | Loss: 0.3471 | Acc: 93.23%
+2025-03-15 05:49:05,374 - INFO - Epoch 27 | Train Loss: 0.3902 | Train Accuracy: 93.08%
+2025-03-15 05:49:05,379 - INFO - Epoch 27 | Valid Loss: 0.5115 | Valid Accuracy: 89.27% | Valid F1 Score: 0.8853
+2025-03-15 05:49:05,720 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_27.pkl
+2025-03-15 05:49:05,720 - INFO - Current learning rate: 1e-05
+2025-03-15 05:49:05,721 - INFO - 
+Epoch 29/70
+2025-03-15 05:51:15,405 - INFO - Epoch: 28 | Batch: 50/269 | Loss: 0.2013 | Acc: 92.16%
+2025-03-15 05:52:37,063 - INFO - Epoch: 28 | Batch: 100/269 | Loss: 1.6073 | Acc: 92.08%
+2025-03-15 05:53:55,589 - INFO - Epoch: 28 | Batch: 150/269 | Loss: 0.3232 | Acc: 91.56%
+2025-03-15 05:55:17,354 - INFO - Epoch: 28 | Batch: 200/269 | Loss: 0.2671 | Acc: 91.67%
+2025-03-15 05:56:35,288 - INFO - Epoch: 28 | Batch: 250/269 | Loss: 0.1137 | Acc: 92.33%
+2025-03-15 06:01:51,391 - INFO - Epoch 28 | Train Loss: 0.3723 | Train Accuracy: 93.22%
+2025-03-15 06:01:51,398 - INFO - Epoch 28 | Valid Loss: 0.4792 | Valid Accuracy: 88.67% | Valid F1 Score: 0.8662
+2025-03-15 06:01:51,939 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_28.pkl
+2025-03-15 06:01:51,940 - INFO - Current learning rate: 1e-05
+2025-03-15 06:01:51,941 - INFO - 
+Epoch 30/70
+2025-03-15 06:04:01,893 - INFO - Epoch: 29 | Batch: 50/269 | Loss: 1.2005 | Acc: 93.14%
+2025-03-15 06:05:21,701 - INFO - Epoch: 29 | Batch: 100/269 | Loss: 0.3331 | Acc: 93.32%
+2025-03-15 06:06:39,810 - INFO - Epoch: 29 | Batch: 150/269 | Loss: 0.5190 | Acc: 93.71%
+2025-03-15 06:08:01,322 - INFO - Epoch: 29 | Batch: 200/269 | Loss: 0.5433 | Acc: 93.53%
+2025-03-15 06:09:20,564 - INFO - Epoch: 29 | Batch: 250/269 | Loss: 0.3496 | Acc: 93.53%
+2025-03-15 06:14:33,290 - INFO - Epoch 29 | Train Loss: 0.3661 | Train Accuracy: 93.36%
+2025-03-15 06:14:33,294 - INFO - Epoch 29 | Valid Loss: 0.4950 | Valid Accuracy: 89.79% | Valid F1 Score: 0.8986
+2025-03-15 06:14:33,729 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_29.pkl
+2025-03-15 06:14:33,730 - INFO - Current learning rate: 1e-05
+2025-03-15 06:14:33,731 - INFO - 
+Epoch 31/70
+2025-03-15 06:16:42,165 - INFO - Epoch: 30 | Batch: 50/269 | Loss: 0.1460 | Acc: 92.16%
+2025-03-15 06:18:01,184 - INFO - Epoch: 30 | Batch: 100/269 | Loss: 0.2646 | Acc: 93.81%
+2025-03-15 06:19:20,636 - INFO - Epoch: 30 | Batch: 150/269 | Loss: 0.9851 | Acc: 93.87%
+2025-03-15 06:20:41,419 - INFO - Epoch: 30 | Batch: 200/269 | Loss: 0.1363 | Acc: 93.78%
+2025-03-15 06:21:59,974 - INFO - Epoch: 30 | Batch: 250/269 | Loss: 0.4093 | Acc: 93.33%
+2025-03-15 06:27:14,043 - INFO - Epoch 30 | Train Loss: 0.3544 | Train Accuracy: 93.91%
+2025-03-15 06:27:14,089 - INFO - Epoch 30 | Valid Loss: 0.4747 | Valid Accuracy: 88.90% | Valid F1 Score: 0.8782
+2025-03-15 06:27:14,471 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_30.pkl
+2025-03-15 06:27:14,472 - INFO - Current learning rate: 1e-05
+2025-03-15 06:27:14,473 - INFO - 
+Epoch 32/70
+2025-03-15 06:29:24,457 - INFO - Epoch: 31 | Batch: 50/269 | Loss: 0.3165 | Acc: 95.59%
+2025-03-15 06:30:46,879 - INFO - Epoch: 31 | Batch: 100/269 | Loss: 0.3339 | Acc: 95.30%
+2025-03-15 06:32:06,739 - INFO - Epoch: 31 | Batch: 150/269 | Loss: 0.2255 | Acc: 94.21%
+2025-03-15 06:33:27,505 - INFO - Epoch: 31 | Batch: 200/269 | Loss: 0.1040 | Acc: 93.91%
+2025-03-15 06:34:45,767 - INFO - Epoch: 31 | Batch: 250/269 | Loss: 0.3885 | Acc: 93.33%
+2025-03-15 06:39:59,989 - INFO - Epoch 31 | Train Loss: 0.3517 | Train Accuracy: 93.87%
+2025-03-15 06:39:59,989 - INFO - Epoch 31 | Valid Loss: 0.4688 | Valid Accuracy: 89.79% | Valid F1 Score: 0.8867
+2025-03-15 06:40:00,316 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_31.pkl
+2025-03-15 06:40:00,317 - INFO - Current learning rate: 1e-05
+2025-03-15 06:40:00,317 - INFO - 
+Epoch 33/70
+2025-03-15 06:42:08,053 - INFO - Epoch: 32 | Batch: 50/269 | Loss: 0.1269 | Acc: 98.04%
+2025-03-15 06:43:27,763 - INFO - Epoch: 32 | Batch: 100/269 | Loss: 0.2143 | Acc: 96.04%
+2025-03-15 06:44:48,420 - INFO - Epoch: 32 | Batch: 150/269 | Loss: 0.1173 | Acc: 95.36%
+2025-03-15 06:46:06,959 - INFO - Epoch: 32 | Batch: 200/269 | Loss: 0.3518 | Acc: 95.40%
+2025-03-15 06:47:26,983 - INFO - Epoch: 32 | Batch: 250/269 | Loss: 0.1917 | Acc: 95.72%
+2025-03-15 06:52:41,081 - INFO - Epoch 32 | Train Loss: 0.3075 | Train Accuracy: 95.21%
+2025-03-15 06:52:41,081 - INFO - Epoch 32 | Valid Loss: 0.4692 | Valid Accuracy: 88.97% | Valid F1 Score: 0.8793
+2025-03-15 06:52:41,427 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_32.pkl
+2025-03-15 06:52:41,428 - INFO - Current learning rate: 1e-05
+2025-03-15 06:52:41,429 - INFO - 
+Epoch 34/70
+2025-03-15 06:54:50,458 - INFO - Epoch: 33 | Batch: 50/269 | Loss: 0.4042 | Acc: 92.16%
+2025-03-15 06:56:16,470 - INFO - Epoch: 33 | Batch: 100/269 | Loss: 0.3609 | Acc: 93.32%
+2025-03-15 06:57:35,621 - INFO - Epoch: 33 | Batch: 150/269 | Loss: 0.1737 | Acc: 92.88%
+2025-03-15 06:58:56,587 - INFO - Epoch: 33 | Batch: 200/269 | Loss: 0.2316 | Acc: 93.03%
+2025-03-15 07:00:15,113 - INFO - Epoch: 33 | Batch: 250/269 | Loss: 0.2150 | Acc: 93.63%
+2025-03-15 07:05:28,412 - INFO - Epoch 33 | Train Loss: 0.3203 | Train Accuracy: 94.38%
+2025-03-15 07:05:28,418 - INFO - Epoch 33 | Valid Loss: 0.4543 | Valid Accuracy: 90.16% | Valid F1 Score: 0.8959
+2025-03-15 07:05:28,755 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_33.pkl
+2025-03-15 07:05:28,756 - INFO - Current learning rate: 1e-05
+2025-03-15 07:05:28,757 - INFO - 
+Epoch 35/70
+2025-03-15 07:07:34,891 - INFO - Epoch: 34 | Batch: 50/269 | Loss: 0.1299 | Acc: 93.14%
+2025-03-15 07:08:54,679 - INFO - Epoch: 34 | Batch: 100/269 | Loss: 0.1837 | Acc: 93.32%
+2025-03-15 07:10:12,093 - INFO - Epoch: 34 | Batch: 150/269 | Loss: 0.2211 | Acc: 92.88%
+2025-03-15 07:11:31,443 - INFO - Epoch: 34 | Batch: 200/269 | Loss: 0.1968 | Acc: 93.91%
+2025-03-15 07:12:48,897 - INFO - Epoch: 34 | Batch: 250/269 | Loss: 1.1389 | Acc: 93.63%
+2025-03-15 07:18:05,706 - INFO - Epoch 34 | Train Loss: 0.3145 | Train Accuracy: 94.70%
+2025-03-15 07:18:05,715 - INFO - Epoch 34 | Valid Loss: 0.4440 | Valid Accuracy: 90.54% | Valid F1 Score: 0.8916
+2025-03-15 07:18:06,031 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_34.pkl
+2025-03-15 07:18:06,031 - INFO - Current learning rate: 1e-05
+2025-03-15 07:18:06,032 - INFO - 
+Epoch 36/70
+2025-03-15 07:20:15,943 - INFO - Epoch: 35 | Batch: 50/269 | Loss: 0.2439 | Acc: 92.16%
+2025-03-15 07:21:36,201 - INFO - Epoch: 35 | Batch: 100/269 | Loss: 0.1157 | Acc: 93.81%
+2025-03-15 07:22:53,294 - INFO - Epoch: 35 | Batch: 150/269 | Loss: 0.2189 | Acc: 93.38%
+2025-03-15 07:24:13,565 - INFO - Epoch: 35 | Batch: 200/269 | Loss: 0.3109 | Acc: 94.53%
+2025-03-15 07:25:31,805 - INFO - Epoch: 35 | Batch: 250/269 | Loss: 0.0937 | Acc: 94.12%
+2025-03-15 07:30:44,380 - INFO - Epoch 35 | Train Loss: 0.3153 | Train Accuracy: 94.89%
+2025-03-15 07:30:44,380 - INFO - Epoch 35 | Valid Loss: 0.4531 | Valid Accuracy: 90.01% | Valid F1 Score: 0.8837
+2025-03-15 07:30:44,713 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_35.pkl
+2025-03-15 07:30:44,713 - INFO - Current learning rate: 1e-05
+2025-03-15 07:30:44,714 - INFO - 
+Epoch 37/70
+2025-03-15 07:32:54,910 - INFO - Epoch: 36 | Batch: 50/269 | Loss: 0.2466 | Acc: 92.65%
+2025-03-15 07:34:16,644 - INFO - Epoch: 36 | Batch: 100/269 | Loss: 1.1766 | Acc: 94.31%
+2025-03-15 07:35:35,056 - INFO - Epoch: 36 | Batch: 150/269 | Loss: 0.1916 | Acc: 94.37%
+2025-03-15 07:36:56,448 - INFO - Epoch: 36 | Batch: 200/269 | Loss: 0.3199 | Acc: 94.65%
+2025-03-15 07:38:15,272 - INFO - Epoch: 36 | Batch: 250/269 | Loss: 0.0903 | Acc: 95.12%
+2025-03-15 07:43:30,239 - INFO - Epoch 36 | Train Loss: 0.2864 | Train Accuracy: 95.54%
+2025-03-15 07:43:30,239 - INFO - Epoch 36 | Valid Loss: 0.4513 | Valid Accuracy: 89.94% | Valid F1 Score: 0.8913
+2025-03-15 07:43:30,557 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_36.pkl
+2025-03-15 07:43:30,558 - INFO - Current learning rate: 1e-05
+2025-03-15 07:43:30,559 - INFO - 
+Epoch 38/70
+2025-03-15 07:45:39,973 - INFO - Epoch: 37 | Batch: 50/269 | Loss: 0.2910 | Acc: 94.12%
+2025-03-15 07:46:59,735 - INFO - Epoch: 37 | Batch: 100/269 | Loss: 0.9925 | Acc: 92.82%
+2025-03-15 07:48:18,461 - INFO - Epoch: 37 | Batch: 150/269 | Loss: 0.2744 | Acc: 93.21%
+2025-03-15 07:49:39,085 - INFO - Epoch: 37 | Batch: 200/269 | Loss: 0.0922 | Acc: 93.03%
+2025-03-15 07:50:55,552 - INFO - Epoch: 37 | Batch: 250/269 | Loss: 0.1295 | Acc: 93.23%
+2025-03-15 07:56:10,180 - INFO - Epoch 37 | Train Loss: 0.3019 | Train Accuracy: 94.47%
+2025-03-15 07:56:10,180 - INFO - Epoch 37 | Valid Loss: 0.4609 | Valid Accuracy: 89.20% | Valid F1 Score: 0.8814
+2025-03-15 07:56:10,506 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_37.pkl
+2025-03-15 07:56:10,506 - INFO - Current learning rate: 1e-05
+2025-03-15 07:56:10,507 - INFO - 
+Epoch 39/70
+2025-03-15 07:58:19,185 - INFO - Epoch: 38 | Batch: 50/269 | Loss: 0.1397 | Acc: 96.57%
+2025-03-15 07:59:38,877 - INFO - Epoch: 38 | Batch: 100/269 | Loss: 0.1102 | Acc: 95.79%
+2025-03-15 08:00:59,004 - INFO - Epoch: 38 | Batch: 150/269 | Loss: 0.1124 | Acc: 96.03%
+2025-03-15 08:02:20,028 - INFO - Epoch: 38 | Batch: 200/269 | Loss: 0.0954 | Acc: 94.28%
+2025-03-15 08:03:36,496 - INFO - Epoch: 38 | Batch: 250/269 | Loss: 0.1572 | Acc: 94.92%
+2025-03-15 08:08:52,248 - INFO - Epoch 38 | Train Loss: 0.2815 | Train Accuracy: 95.77%
+2025-03-15 08:08:52,294 - INFO - Epoch 38 | Valid Loss: 0.4575 | Valid Accuracy: 89.42% | Valid F1 Score: 0.8810
+2025-03-15 08:08:52,608 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_38.pkl
+2025-03-15 08:08:52,609 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 08:08:52,610 - INFO - 
+Epoch 40/70
+2025-03-15 08:10:58,106 - INFO - Epoch: 39 | Batch: 50/269 | Loss: 0.5171 | Acc: 96.08%
+2025-03-15 08:12:19,907 - INFO - Epoch: 39 | Batch: 100/269 | Loss: 0.4416 | Acc: 94.55%
+2025-03-15 08:13:38,254 - INFO - Epoch: 39 | Batch: 150/269 | Loss: 0.0996 | Acc: 93.71%
+2025-03-15 08:14:59,790 - INFO - Epoch: 39 | Batch: 200/269 | Loss: 0.0992 | Acc: 94.78%
+2025-03-15 08:16:15,449 - INFO - Epoch: 39 | Batch: 250/269 | Loss: 0.3050 | Acc: 94.92%
+2025-03-15 08:21:24,504 - INFO - Epoch 39 | Train Loss: 0.2744 | Train Accuracy: 95.96%
+2025-03-15 08:21:24,510 - INFO - Epoch 39 | Valid Loss: 0.4600 | Valid Accuracy: 89.57% | Valid F1 Score: 0.8869
+2025-03-15 08:21:24,866 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_39.pkl
+2025-03-15 08:21:24,867 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 08:21:24,868 - INFO - 
+Epoch 41/70
+2025-03-15 08:23:27,862 - INFO - Epoch: 40 | Batch: 50/269 | Loss: 0.1368 | Acc: 97.55%
+2025-03-15 08:24:44,681 - INFO - Epoch: 40 | Batch: 100/269 | Loss: 0.2914 | Acc: 97.77%
+2025-03-15 08:25:58,804 - INFO - Epoch: 40 | Batch: 150/269 | Loss: 0.9991 | Acc: 96.52%
+2025-03-15 08:27:18,942 - INFO - Epoch: 40 | Batch: 200/269 | Loss: 0.2078 | Acc: 95.77%
+2025-03-15 08:28:34,312 - INFO - Epoch: 40 | Batch: 250/269 | Loss: 0.2654 | Acc: 96.02%
+2025-03-15 08:33:43,036 - INFO - Epoch 40 | Train Loss: 0.2695 | Train Accuracy: 95.91%
+2025-03-15 08:33:43,039 - INFO - Epoch 40 | Valid Loss: 0.4491 | Valid Accuracy: 89.57% | Valid F1 Score: 0.8884
+2025-03-15 08:33:43,369 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_40.pkl
+2025-03-15 08:33:43,369 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 08:33:43,370 - INFO - 
+Epoch 42/70
+2025-03-15 08:35:50,730 - INFO - Epoch: 41 | Batch: 50/269 | Loss: 0.2000 | Acc: 98.04%
+2025-03-15 08:37:14,969 - INFO - Epoch: 41 | Batch: 100/269 | Loss: 0.2840 | Acc: 96.53%
+2025-03-15 08:38:32,266 - INFO - Epoch: 41 | Batch: 150/269 | Loss: 0.1522 | Acc: 97.02%
+2025-03-15 08:39:53,791 - INFO - Epoch: 41 | Batch: 200/269 | Loss: 0.0993 | Acc: 96.77%
+2025-03-15 08:41:09,791 - INFO - Epoch: 41 | Batch: 250/269 | Loss: 0.2652 | Acc: 96.81%
+2025-03-15 08:46:22,441 - INFO - Epoch 41 | Train Loss: 0.2530 | Train Accuracy: 96.84%
+2025-03-15 08:46:22,458 - INFO - Epoch 41 | Valid Loss: 0.4519 | Valid Accuracy: 89.72% | Valid F1 Score: 0.8879
+2025-03-15 08:46:22,890 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_41.pkl
+2025-03-15 08:46:22,890 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 08:46:22,891 - INFO - 
+Epoch 43/70
+2025-03-15 08:48:36,448 - INFO - Epoch: 42 | Batch: 50/269 | Loss: 0.2276 | Acc: 96.57%
+2025-03-15 08:49:56,993 - INFO - Epoch: 42 | Batch: 100/269 | Loss: 0.3882 | Acc: 97.52%
+2025-03-15 08:51:15,278 - INFO - Epoch: 42 | Batch: 150/269 | Loss: 0.0822 | Acc: 96.85%
+2025-03-15 08:52:33,240 - INFO - Epoch: 42 | Batch: 200/269 | Loss: 0.2222 | Acc: 96.52%
+2025-03-15 08:53:52,104 - INFO - Epoch: 42 | Batch: 250/269 | Loss: 1.4668 | Acc: 96.41%
+2025-03-15 08:59:02,670 - INFO - Epoch 42 | Train Loss: 0.2692 | Train Accuracy: 95.91%
+2025-03-15 08:59:02,670 - INFO - Epoch 42 | Valid Loss: 0.4538 | Valid Accuracy: 89.49% | Valid F1 Score: 0.8855
+2025-03-15 08:59:02,984 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_42.pkl
+2025-03-15 08:59:02,985 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 08:59:02,986 - INFO - 
+Epoch 44/70
+2025-03-15 09:01:16,229 - INFO - Epoch: 43 | Batch: 50/269 | Loss: 0.1626 | Acc: 93.63%
+2025-03-15 09:02:35,392 - INFO - Epoch: 43 | Batch: 100/269 | Loss: 0.2300 | Acc: 93.81%
+2025-03-15 09:03:55,191 - INFO - Epoch: 43 | Batch: 150/269 | Loss: 0.0768 | Acc: 94.37%
+2025-03-15 09:05:15,532 - INFO - Epoch: 43 | Batch: 200/269 | Loss: 0.1881 | Acc: 94.90%
+2025-03-15 09:06:32,362 - INFO - Epoch: 43 | Batch: 250/269 | Loss: 0.2534 | Acc: 95.42%
+2025-03-15 09:11:42,223 - INFO - Epoch 43 | Train Loss: 0.2707 | Train Accuracy: 96.00%
+2025-03-15 09:11:42,229 - INFO - Epoch 43 | Valid Loss: 0.4556 | Valid Accuracy: 89.42% | Valid F1 Score: 0.8799
+2025-03-15 09:11:42,550 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_43.pkl
+2025-03-15 09:11:42,551 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 09:11:42,552 - INFO - 
+Epoch 45/70
+2025-03-15 09:13:48,508 - INFO - Epoch: 44 | Batch: 50/269 | Loss: 0.0953 | Acc: 96.57%
+2025-03-15 09:15:08,600 - INFO - Epoch: 44 | Batch: 100/269 | Loss: 0.0997 | Acc: 96.53%
+2025-03-15 09:16:26,884 - INFO - Epoch: 44 | Batch: 150/269 | Loss: 0.1171 | Acc: 96.19%
+2025-03-15 09:17:48,789 - INFO - Epoch: 44 | Batch: 200/269 | Loss: 0.1594 | Acc: 96.52%
+2025-03-15 09:19:08,112 - INFO - Epoch: 44 | Batch: 250/269 | Loss: 0.3493 | Acc: 96.51%
+2025-03-15 09:24:26,884 - INFO - Epoch 44 | Train Loss: 0.2484 | Train Accuracy: 96.56%
+2025-03-15 09:24:26,944 - INFO - Epoch 44 | Valid Loss: 0.4421 | Valid Accuracy: 89.72% | Valid F1 Score: 0.8838
+2025-03-15 09:24:27,344 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_44.pkl
+2025-03-15 09:24:27,345 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 09:24:27,346 - INFO - 
+Epoch 46/70
+2025-03-15 09:26:37,560 - INFO - Epoch: 45 | Batch: 50/269 | Loss: 0.1230 | Acc: 97.06%
+2025-03-15 09:27:59,650 - INFO - Epoch: 45 | Batch: 100/269 | Loss: 0.0798 | Acc: 97.28%
+2025-03-15 09:29:16,892 - INFO - Epoch: 45 | Batch: 150/269 | Loss: 0.1325 | Acc: 97.52%
+2025-03-15 09:30:41,862 - INFO - Epoch: 45 | Batch: 200/269 | Loss: 0.1225 | Acc: 97.51%
+2025-03-15 09:32:00,020 - INFO - Epoch: 45 | Batch: 250/269 | Loss: 0.1199 | Acc: 97.41%
+2025-03-15 09:37:13,957 - INFO - Epoch 45 | Train Loss: 0.2376 | Train Accuracy: 97.26%
+2025-03-15 09:37:13,958 - INFO - Epoch 45 | Valid Loss: 0.4514 | Valid Accuracy: 89.72% | Valid F1 Score: 0.8955
+2025-03-15 09:37:14,336 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_45.pkl
+2025-03-15 09:37:14,337 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 09:37:14,338 - INFO - 
+Epoch 47/70
+2025-03-15 09:39:21,888 - INFO - Epoch: 46 | Batch: 50/269 | Loss: 0.0936 | Acc: 97.06%
+2025-03-15 09:40:41,103 - INFO - Epoch: 46 | Batch: 100/269 | Loss: 0.3112 | Acc: 96.04%
+2025-03-15 09:41:59,768 - INFO - Epoch: 46 | Batch: 150/269 | Loss: 0.1430 | Acc: 96.19%
+2025-03-15 09:43:23,548 - INFO - Epoch: 46 | Batch: 200/269 | Loss: 0.6884 | Acc: 95.90%
+2025-03-15 09:44:46,876 - INFO - Epoch: 46 | Batch: 250/269 | Loss: 0.1854 | Acc: 96.22%
+2025-03-15 09:50:01,591 - INFO - Epoch 46 | Train Loss: 0.2444 | Train Accuracy: 96.75%
+2025-03-15 09:50:01,591 - INFO - Epoch 46 | Valid Loss: 0.4589 | Valid Accuracy: 89.05% | Valid F1 Score: 0.8708
+2025-03-15 09:50:01,903 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_46.pkl
+2025-03-15 09:50:01,903 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 09:50:01,904 - INFO - 
+Epoch 48/70
+2025-03-15 09:52:09,432 - INFO - Epoch: 47 | Batch: 50/269 | Loss: 0.1908 | Acc: 96.08%
+2025-03-15 09:53:27,637 - INFO - Epoch: 47 | Batch: 100/269 | Loss: 0.1680 | Acc: 96.78%
+2025-03-15 09:54:45,677 - INFO - Epoch: 47 | Batch: 150/269 | Loss: 0.4276 | Acc: 95.86%
+2025-03-15 09:56:05,610 - INFO - Epoch: 47 | Batch: 200/269 | Loss: 0.0764 | Acc: 95.77%
+2025-03-15 09:57:22,873 - INFO - Epoch: 47 | Batch: 250/269 | Loss: 0.1580 | Acc: 96.22%
+2025-03-15 10:02:39,041 - INFO - Epoch 47 | Train Loss: 0.2343 | Train Accuracy: 96.98%
+2025-03-15 10:02:39,042 - INFO - Epoch 47 | Valid Loss: 0.4460 | Valid Accuracy: 89.34% | Valid F1 Score: 0.8781
+2025-03-15 10:02:39,351 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_47.pkl
+2025-03-15 10:02:39,352 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 10:02:39,352 - INFO - 
+Epoch 49/70
+2025-03-15 10:04:46,324 - INFO - Epoch: 48 | Batch: 50/269 | Loss: 0.4324 | Acc: 96.08%
+2025-03-15 10:06:01,590 - INFO - Epoch: 48 | Batch: 100/269 | Loss: 1.0520 | Acc: 94.55%
+2025-03-15 10:07:22,066 - INFO - Epoch: 48 | Batch: 150/269 | Loss: 0.1462 | Acc: 95.53%
+2025-03-15 10:08:40,501 - INFO - Epoch: 48 | Batch: 200/269 | Loss: 0.5033 | Acc: 95.52%
+2025-03-15 10:09:59,469 - INFO - Epoch: 48 | Batch: 250/269 | Loss: 0.3217 | Acc: 95.72%
+2025-03-15 10:15:11,837 - INFO - Epoch 48 | Train Loss: 0.2437 | Train Accuracy: 96.75%
+2025-03-15 10:15:11,841 - INFO - Epoch 48 | Valid Loss: 0.4453 | Valid Accuracy: 89.79% | Valid F1 Score: 0.8883
+2025-03-15 10:15:12,165 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_48.pkl
+2025-03-15 10:15:12,165 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 10:15:12,166 - INFO - 
+Epoch 50/70
+2025-03-15 10:17:19,551 - INFO - Epoch: 49 | Batch: 50/269 | Loss: 0.2035 | Acc: 96.57%
+2025-03-15 10:18:36,694 - INFO - Epoch: 49 | Batch: 100/269 | Loss: 0.1632 | Acc: 96.78%
+2025-03-15 10:19:57,723 - INFO - Epoch: 49 | Batch: 150/269 | Loss: 0.1531 | Acc: 96.03%
+2025-03-15 10:21:19,405 - INFO - Epoch: 49 | Batch: 200/269 | Loss: 0.2020 | Acc: 95.77%
+2025-03-15 10:22:40,211 - INFO - Epoch: 49 | Batch: 250/269 | Loss: 0.1175 | Acc: 95.72%
+2025-03-15 10:27:49,293 - INFO - Epoch 49 | Train Loss: 0.2372 | Train Accuracy: 96.89%
+2025-03-15 10:27:49,293 - INFO - Epoch 49 | Valid Loss: 0.4709 | Valid Accuracy: 89.05% | Valid F1 Score: 0.8754
+2025-03-15 10:27:49,622 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_49.pkl
+2025-03-15 10:27:49,622 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 10:27:49,623 - INFO - 
+Epoch 51/70
+2025-03-15 10:29:54,552 - INFO - Epoch: 50 | Batch: 50/269 | Loss: 0.1697 | Acc: 94.61%
+2025-03-15 10:31:11,506 - INFO - Epoch: 50 | Batch: 100/269 | Loss: 0.1298 | Acc: 95.54%
+2025-03-15 10:32:31,198 - INFO - Epoch: 50 | Batch: 150/269 | Loss: 0.3610 | Acc: 95.53%
+2025-03-15 10:33:48,643 - INFO - Epoch: 50 | Batch: 200/269 | Loss: 0.1765 | Acc: 95.15%
+2025-03-15 10:35:08,837 - INFO - Epoch: 50 | Batch: 250/269 | Loss: 0.1118 | Acc: 95.32%
+2025-03-15 10:40:17,740 - INFO - Epoch 50 | Train Loss: 0.2793 | Train Accuracy: 95.40%
+2025-03-15 10:40:17,740 - INFO - Epoch 50 | Valid Loss: 0.4427 | Valid Accuracy: 89.79% | Valid F1 Score: 0.8898
+2025-03-15 10:40:18,054 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_50.pkl
+2025-03-15 10:40:18,054 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 10:40:18,055 - INFO - 
+Epoch 52/70
+2025-03-15 10:42:25,273 - INFO - Epoch: 51 | Batch: 50/269 | Loss: 0.1662 | Acc: 95.59%
+2025-03-15 10:43:45,613 - INFO - Epoch: 51 | Batch: 100/269 | Loss: 0.1848 | Acc: 96.04%
+2025-03-15 10:45:01,198 - INFO - Epoch: 51 | Batch: 150/269 | Loss: 0.1384 | Acc: 96.03%
+2025-03-15 10:46:18,988 - INFO - Epoch: 51 | Batch: 200/269 | Loss: 0.2384 | Acc: 95.27%
+2025-03-15 10:47:39,195 - INFO - Epoch: 51 | Batch: 250/269 | Loss: 0.1204 | Acc: 95.72%
+2025-03-15 10:52:50,401 - INFO - Epoch 51 | Train Loss: 0.2698 | Train Accuracy: 95.63%
+2025-03-15 10:52:50,402 - INFO - Epoch 51 | Valid Loss: 0.4455 | Valid Accuracy: 89.72% | Valid F1 Score: 0.8837
+2025-03-15 10:52:50,719 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_51.pkl
+2025-03-15 10:52:50,720 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 10:52:50,721 - INFO - 
+Epoch 53/70
+2025-03-15 10:54:55,542 - INFO - Epoch: 52 | Batch: 50/269 | Loss: 0.0829 | Acc: 97.55%
+2025-03-15 10:56:13,152 - INFO - Epoch: 52 | Batch: 100/269 | Loss: 0.1339 | Acc: 98.02%
+2025-03-15 10:57:30,616 - INFO - Epoch: 52 | Batch: 150/269 | Loss: 0.1800 | Acc: 97.68%
+2025-03-15 10:58:48,196 - INFO - Epoch: 52 | Batch: 200/269 | Loss: 0.3546 | Acc: 95.52%
+2025-03-15 11:00:04,505 - INFO - Epoch: 52 | Batch: 250/269 | Loss: 0.3482 | Acc: 96.31%
+2025-03-15 11:05:15,929 - INFO - Epoch 52 | Train Loss: 0.2514 | Train Accuracy: 96.47%
+2025-03-15 11:05:15,934 - INFO - Epoch 52 | Valid Loss: 0.4438 | Valid Accuracy: 89.87% | Valid F1 Score: 0.8930
+2025-03-15 11:05:16,280 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_52.pkl
+2025-03-15 11:05:16,281 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 11:05:16,282 - INFO - 
+Epoch 54/70
+2025-03-15 11:07:21,789 - INFO - Epoch: 53 | Batch: 50/269 | Loss: 0.1683 | Acc: 98.53%
+2025-03-15 11:08:38,403 - INFO - Epoch: 53 | Batch: 100/269 | Loss: 0.1822 | Acc: 98.02%
+2025-03-15 11:09:52,439 - INFO - Epoch: 53 | Batch: 150/269 | Loss: 0.1849 | Acc: 96.85%
+2025-03-15 11:11:10,227 - INFO - Epoch: 53 | Batch: 200/269 | Loss: 0.1047 | Acc: 96.89%
+2025-03-15 11:12:25,495 - INFO - Epoch: 53 | Batch: 250/269 | Loss: 0.4046 | Acc: 97.11%
+2025-03-15 11:17:36,581 - INFO - Epoch 53 | Train Loss: 0.2503 | Train Accuracy: 96.70%
+2025-03-15 11:17:36,593 - INFO - Epoch 53 | Valid Loss: 0.4457 | Valid Accuracy: 90.09% | Valid F1 Score: 0.8960
+2025-03-15 11:17:36,918 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_53.pkl
+2025-03-15 11:17:36,918 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 11:17:36,919 - INFO - 
+Epoch 55/70
+2025-03-15 11:19:45,026 - INFO - Epoch: 54 | Batch: 50/269 | Loss: 0.0901 | Acc: 95.10%
+2025-03-15 11:21:09,352 - INFO - Epoch: 54 | Batch: 100/269 | Loss: 0.2529 | Acc: 95.05%
+2025-03-15 11:22:28,361 - INFO - Epoch: 54 | Batch: 150/269 | Loss: 0.1582 | Acc: 96.03%
+2025-03-15 11:23:47,636 - INFO - Epoch: 54 | Batch: 200/269 | Loss: 0.1818 | Acc: 96.27%
+2025-03-15 11:25:06,978 - INFO - Epoch: 54 | Batch: 250/269 | Loss: 0.2195 | Acc: 96.12%
+2025-03-15 11:30:19,067 - INFO - Epoch 54 | Train Loss: 0.2519 | Train Accuracy: 95.96%
+2025-03-15 11:30:19,067 - INFO - Epoch 54 | Valid Loss: 0.4525 | Valid Accuracy: 89.34% | Valid F1 Score: 0.8782
+2025-03-15 11:30:19,388 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_54.pkl
+2025-03-15 11:30:19,388 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 11:30:19,389 - INFO - 
+Epoch 56/70
+2025-03-15 11:32:24,267 - INFO - Epoch: 55 | Batch: 50/269 | Loss: 0.1495 | Acc: 97.06%
+2025-03-15 11:33:42,757 - INFO - Epoch: 55 | Batch: 100/269 | Loss: 0.0833 | Acc: 97.28%
+2025-03-15 11:34:57,956 - INFO - Epoch: 55 | Batch: 150/269 | Loss: 0.0987 | Acc: 97.52%
+2025-03-15 11:36:16,313 - INFO - Epoch: 55 | Batch: 200/269 | Loss: 0.3615 | Acc: 97.51%
+2025-03-15 11:37:33,787 - INFO - Epoch: 55 | Batch: 250/269 | Loss: 0.3422 | Acc: 97.11%
+2025-03-15 11:42:43,029 - INFO - Epoch 55 | Train Loss: 0.2378 | Train Accuracy: 97.26%
+2025-03-15 11:42:43,029 - INFO - Epoch 55 | Valid Loss: 0.4347 | Valid Accuracy: 90.09% | Valid F1 Score: 0.8958
+2025-03-15 11:42:43,333 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_55.pkl
+2025-03-15 11:42:43,334 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 11:42:43,335 - INFO - 
+Epoch 57/70
+2025-03-15 11:44:49,814 - INFO - Epoch: 56 | Batch: 50/269 | Loss: 0.1009 | Acc: 95.59%
+2025-03-15 11:46:09,479 - INFO - Epoch: 56 | Batch: 100/269 | Loss: 0.1085 | Acc: 96.04%
+2025-03-15 11:47:24,487 - INFO - Epoch: 56 | Batch: 150/269 | Loss: 0.2280 | Acc: 96.52%
+2025-03-15 11:48:43,000 - INFO - Epoch: 56 | Batch: 200/269 | Loss: 0.1704 | Acc: 95.77%
+2025-03-15 11:50:02,482 - INFO - Epoch: 56 | Batch: 250/269 | Loss: 0.1956 | Acc: 95.82%
+2025-03-15 11:55:11,892 - INFO - Epoch 56 | Train Loss: 0.2498 | Train Accuracy: 96.47%
+2025-03-15 11:55:11,892 - INFO - Epoch 56 | Valid Loss: 0.4389 | Valid Accuracy: 90.16% | Valid F1 Score: 0.8987
+2025-03-15 11:55:12,216 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_56.pkl
+2025-03-15 11:55:12,216 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 11:55:12,217 - INFO - 
+Epoch 58/70
+2025-03-15 11:57:16,799 - INFO - Epoch: 57 | Batch: 50/269 | Loss: 0.2595 | Acc: 94.12%
+2025-03-15 11:58:33,907 - INFO - Epoch: 57 | Batch: 100/269 | Loss: 0.1061 | Acc: 96.04%
+2025-03-15 11:59:49,925 - INFO - Epoch: 57 | Batch: 150/269 | Loss: 0.1080 | Acc: 96.19%
+2025-03-15 12:01:09,829 - INFO - Epoch: 57 | Batch: 200/269 | Loss: 0.9557 | Acc: 96.39%
+2025-03-15 12:02:25,885 - INFO - Epoch: 57 | Batch: 250/269 | Loss: 0.1100 | Acc: 96.02%
+2025-03-15 12:07:37,451 - INFO - Epoch 57 | Train Loss: 0.2506 | Train Accuracy: 96.61%
+2025-03-15 12:07:37,451 - INFO - Epoch 57 | Valid Loss: 0.4509 | Valid Accuracy: 89.57% | Valid F1 Score: 0.8865
+2025-03-15 12:07:37,776 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_57.pkl
+2025-03-15 12:07:37,777 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 12:07:37,778 - INFO - 
+Epoch 59/70
+2025-03-15 12:09:46,930 - INFO - Epoch: 58 | Batch: 50/269 | Loss: 0.3035 | Acc: 96.08%
+2025-03-15 12:11:06,548 - INFO - Epoch: 58 | Batch: 100/269 | Loss: 0.1149 | Acc: 96.04%
+2025-03-15 12:12:25,692 - INFO - Epoch: 58 | Batch: 150/269 | Loss: 0.1033 | Acc: 96.36%
+2025-03-15 12:13:45,378 - INFO - Epoch: 58 | Batch: 200/269 | Loss: 0.1778 | Acc: 96.02%
+2025-03-15 12:15:04,044 - INFO - Epoch: 58 | Batch: 250/269 | Loss: 0.1704 | Acc: 95.82%
+2025-03-15 12:20:14,492 - INFO - Epoch 58 | Train Loss: 0.2608 | Train Accuracy: 95.91%
+2025-03-15 12:20:14,492 - INFO - Epoch 58 | Valid Loss: 0.4461 | Valid Accuracy: 89.20% | Valid F1 Score: 0.8853
+2025-03-15 12:20:14,808 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_58.pkl
+2025-03-15 12:20:14,809 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 12:20:14,810 - INFO - 
+Epoch 60/70
+2025-03-15 12:22:22,117 - INFO - Epoch: 59 | Batch: 50/269 | Loss: 0.3320 | Acc: 97.55%
+2025-03-15 12:23:41,454 - INFO - Epoch: 59 | Batch: 100/269 | Loss: 0.3772 | Acc: 97.77%
+2025-03-15 12:24:59,716 - INFO - Epoch: 59 | Batch: 150/269 | Loss: 0.1055 | Acc: 96.85%
+2025-03-15 12:26:20,978 - INFO - Epoch: 59 | Batch: 200/269 | Loss: 0.0982 | Acc: 97.51%
+2025-03-15 12:27:41,052 - INFO - Epoch: 59 | Batch: 250/269 | Loss: 0.1051 | Acc: 97.21%
+2025-03-15 12:32:51,069 - INFO - Epoch 59 | Train Loss: 0.2418 | Train Accuracy: 96.38%
+2025-03-15 12:32:51,075 - INFO - Epoch 59 | Valid Loss: 0.4578 | Valid Accuracy: 90.01% | Valid F1 Score: 0.8822
+2025-03-15 12:32:51,444 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_59.pkl
+2025-03-15 12:32:51,444 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 12:32:51,445 - INFO - 
+Epoch 61/70
+2025-03-15 12:34:58,975 - INFO - Epoch: 60 | Batch: 50/269 | Loss: 0.5914 | Acc: 95.10%
+2025-03-15 12:36:19,367 - INFO - Epoch: 60 | Batch: 100/269 | Loss: 0.2325 | Acc: 95.79%
+2025-03-15 12:37:35,297 - INFO - Epoch: 60 | Batch: 150/269 | Loss: 0.1568 | Acc: 96.36%
+2025-03-15 12:38:55,679 - INFO - Epoch: 60 | Batch: 200/269 | Loss: 0.0862 | Acc: 96.64%
+2025-03-15 12:40:12,701 - INFO - Epoch: 60 | Batch: 250/269 | Loss: 0.3089 | Acc: 96.31%
+2025-03-15 12:45:25,344 - INFO - Epoch 60 | Train Loss: 0.2521 | Train Accuracy: 96.05%
+2025-03-15 12:45:25,345 - INFO - Epoch 60 | Valid Loss: 0.4365 | Valid Accuracy: 90.54% | Valid F1 Score: 0.8941
+2025-03-15 12:45:25,844 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_60.pkl
+2025-03-15 12:45:25,844 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 12:45:25,845 - INFO - 
+Epoch 62/70
+2025-03-15 12:47:30,669 - INFO - Epoch: 61 | Batch: 50/269 | Loss: 0.-1157 | Acc: 97.06%
+2025-03-15 12:48:48,246 - INFO - Epoch: 61 | Batch: 100/269 | Loss: 0.1585 | Acc: 96.29%
+2025-03-15 12:50:04,192 - INFO - Epoch: 61 | Batch: 150/269 | Loss: 0.1376 | Acc: 95.86%
+2025-03-15 12:51:21,522 - INFO - Epoch: 61 | Batch: 200/269 | Loss: 0.1628 | Acc: 96.39%
+2025-03-15 12:52:38,694 - INFO - Epoch: 61 | Batch: 250/269 | Loss: 0.1012 | Acc: 96.02%
+2025-03-15 12:57:50,536 - INFO - Epoch 61 | Train Loss: 0.2406 | Train Accuracy: 96.84%
+2025-03-15 12:57:50,542 - INFO - Epoch 61 | Valid Loss: 0.4383 | Valid Accuracy: 89.94% | Valid F1 Score: 0.8913
+2025-03-15 12:57:50,859 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_61.pkl
+2025-03-15 12:57:50,859 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 12:57:50,860 - INFO - 
+Epoch 63/70
+2025-03-15 12:59:56,584 - INFO - Epoch: 62 | Batch: 50/269 | Loss: 0.2747 | Acc: 97.06%
+2025-03-15 13:01:16,187 - INFO - Epoch: 62 | Batch: 100/269 | Loss: 0.0849 | Acc: 98.02%
+2025-03-15 13:02:34,706 - INFO - Epoch: 62 | Batch: 150/269 | Loss: 0.0937 | Acc: 98.01%
+2025-03-15 13:03:54,411 - INFO - Epoch: 62 | Batch: 200/269 | Loss: 0.5507 | Acc: 97.39%
+2025-03-15 13:05:10,473 - INFO - Epoch: 62 | Batch: 250/269 | Loss: 0.2578 | Acc: 97.01%
+2025-03-15 13:10:20,869 - INFO - Epoch 62 | Train Loss: 0.2394 | Train Accuracy: 97.07%
+2025-03-15 13:10:20,873 - INFO - Epoch 62 | Valid Loss: 0.4577 | Valid Accuracy: 88.97% | Valid F1 Score: 0.8763
+2025-03-15 13:10:21,205 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_62.pkl
+2025-03-15 13:10:21,205 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 13:10:21,206 - INFO - 
+Epoch 64/70
+2025-03-15 13:12:28,278 - INFO - Epoch: 63 | Batch: 50/269 | Loss: 0.2235 | Acc: 96.57%
+2025-03-15 13:13:46,214 - INFO - Epoch: 63 | Batch: 100/269 | Loss: 0.1527 | Acc: 96.78%
+2025-03-15 13:15:02,168 - INFO - Epoch: 63 | Batch: 150/269 | Loss: 0.0901 | Acc: 96.69%
+2025-03-15 13:16:22,495 - INFO - Epoch: 63 | Batch: 200/269 | Loss: 0.2100 | Acc: 97.01%
+2025-03-15 13:17:40,014 - INFO - Epoch: 63 | Batch: 250/269 | Loss: 0.6874 | Acc: 97.21%
+2025-03-15 13:22:49,893 - INFO - Epoch 63 | Train Loss: 0.2413 | Train Accuracy: 96.56%
+2025-03-15 13:22:49,893 - INFO - Epoch 63 | Valid Loss: 0.4599 | Valid Accuracy: 89.42% | Valid F1 Score: 0.8781
+2025-03-15 13:22:50,209 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_63.pkl
+2025-03-15 13:22:50,209 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 13:22:50,210 - INFO - 
+Epoch 65/70
+2025-03-15 13:24:56,187 - INFO - Epoch: 64 | Batch: 50/269 | Loss: 0.2025 | Acc: 99.02%
+2025-03-15 13:26:14,746 - INFO - Epoch: 64 | Batch: 100/269 | Loss: 0.1215 | Acc: 98.76%
+2025-03-15 13:27:31,009 - INFO - Epoch: 64 | Batch: 150/269 | Loss: 0.2641 | Acc: 98.18%
+2025-03-15 13:28:49,745 - INFO - Epoch: 64 | Batch: 200/269 | Loss: 0.1604 | Acc: 97.64%
+2025-03-15 13:30:06,129 - INFO - Epoch: 64 | Batch: 250/269 | Loss: 0.3990 | Acc: 97.41%
+2025-03-15 13:35:18,948 - INFO - Epoch 64 | Train Loss: 0.2535 | Train Accuracy: 96.10%
+2025-03-15 13:35:18,993 - INFO - Epoch 64 | Valid Loss: 0.4364 | Valid Accuracy: 90.46% | Valid F1 Score: 0.9016
+2025-03-15 13:35:19,312 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_64.pkl
+2025-03-15 13:35:19,313 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 13:35:19,314 - INFO - 
+Epoch 66/70
+2025-03-15 13:37:25,558 - INFO - Epoch: 65 | Batch: 50/269 | Loss: 0.0981 | Acc: 95.59%
+2025-03-15 13:38:43,411 - INFO - Epoch: 65 | Batch: 100/269 | Loss: 0.1932 | Acc: 96.29%
+2025-03-15 13:40:00,914 - INFO - Epoch: 65 | Batch: 150/269 | Loss: 0.0821 | Acc: 96.36%
+2025-03-15 13:41:19,664 - INFO - Epoch: 65 | Batch: 200/269 | Loss: 0.1813 | Acc: 97.14%
+2025-03-15 13:42:36,193 - INFO - Epoch: 65 | Batch: 250/269 | Loss: 0.1221 | Acc: 96.91%
+2025-03-15 13:47:47,547 - INFO - Epoch 65 | Train Loss: 0.2277 | Train Accuracy: 96.75%
+2025-03-15 13:47:47,548 - INFO - Epoch 65 | Valid Loss: 0.4511 | Valid Accuracy: 89.57% | Valid F1 Score: 0.8866
+2025-03-15 13:47:47,875 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_65.pkl
+2025-03-15 13:47:47,876 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 13:47:47,877 - INFO - 
+Epoch 67/70
+2025-03-15 13:49:52,250 - INFO - Epoch: 66 | Batch: 50/269 | Loss: 0.1616 | Acc: 99.51%
+2025-03-15 13:51:10,399 - INFO - Epoch: 66 | Batch: 100/269 | Loss: 0.0970 | Acc: 97.77%
+2025-03-15 13:52:28,045 - INFO - Epoch: 66 | Batch: 150/269 | Loss: 0.2646 | Acc: 97.35%
+2025-03-15 13:53:46,732 - INFO - Epoch: 66 | Batch: 200/269 | Loss: 0.2549 | Acc: 97.76%
+2025-03-15 13:55:02,875 - INFO - Epoch: 66 | Batch: 250/269 | Loss: 0.1701 | Acc: 97.21%
+2025-03-15 14:00:13,833 - INFO - Epoch 66 | Train Loss: 0.2284 | Train Accuracy: 97.26%
+2025-03-15 14:00:13,849 - INFO - Epoch 66 | Valid Loss: 0.4387 | Valid Accuracy: 89.72% | Valid F1 Score: 0.8884
+2025-03-15 14:00:14,355 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_66.pkl
+2025-03-15 14:00:14,356 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 14:00:14,357 - INFO - 
+Epoch 68/70
+2025-03-15 14:02:21,395 - INFO - Epoch: 67 | Batch: 50/269 | Loss: 0.0891 | Acc: 98.53%
+2025-03-15 14:03:39,586 - INFO - Epoch: 67 | Batch: 100/269 | Loss: 0.1644 | Acc: 98.02%
+2025-03-15 14:04:56,684 - INFO - Epoch: 67 | Batch: 150/269 | Loss: 0.1432 | Acc: 97.52%
+2025-03-15 14:06:15,362 - INFO - Epoch: 67 | Batch: 200/269 | Loss: 0.1186 | Acc: 97.76%
+2025-03-15 14:07:31,741 - INFO - Epoch: 67 | Batch: 250/269 | Loss: 0.0931 | Acc: 97.21%
+2025-03-15 14:12:43,253 - INFO - Epoch 67 | Train Loss: 0.2405 | Train Accuracy: 96.89%
+2025-03-15 14:12:43,299 - INFO - Epoch 67 | Valid Loss: 0.4491 | Valid Accuracy: 89.34% | Valid F1 Score: 0.8868
+2025-03-15 14:12:43,748 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_67.pkl
+2025-03-15 14:12:43,749 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 14:12:43,749 - INFO - 
+Epoch 69/70
+2025-03-15 14:14:50,769 - INFO - Epoch: 68 | Batch: 50/269 | Loss: 0.1480 | Acc: 97.55%
+2025-03-15 14:16:11,044 - INFO - Epoch: 68 | Batch: 100/269 | Loss: 0.1637 | Acc: 96.78%
+2025-03-15 14:17:27,364 - INFO - Epoch: 68 | Batch: 150/269 | Loss: 0.1888 | Acc: 96.52%
+2025-03-15 14:18:44,868 - INFO - Epoch: 68 | Batch: 200/269 | Loss: 0.5254 | Acc: 95.77%
+2025-03-15 14:20:02,787 - INFO - Epoch: 68 | Batch: 250/269 | Loss: 0.1441 | Acc: 96.02%
+2025-03-15 14:25:14,942 - INFO - Epoch 68 | Train Loss: 0.2439 | Train Accuracy: 96.51%
+2025-03-15 14:25:14,955 - INFO - Epoch 68 | Valid Loss: 0.4382 | Valid Accuracy: 89.94% | Valid F1 Score: 0.8942
+2025-03-15 14:25:15,465 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_68.pkl
+2025-03-15 14:25:15,466 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 14:25:15,466 - INFO - 
+Epoch 70/70
+2025-03-15 14:27:18,910 - INFO - Epoch: 69 | Batch: 50/269 | Loss: 0.2352 | Acc: 95.59%
+2025-03-15 14:28:37,312 - INFO - Epoch: 69 | Batch: 100/269 | Loss: 0.2734 | Acc: 97.03%
+2025-03-15 14:29:53,086 - INFO - Epoch: 69 | Batch: 150/269 | Loss: 0.8130 | Acc: 96.36%
+2025-03-15 14:31:11,315 - INFO - Epoch: 69 | Batch: 200/269 | Loss: 0.0800 | Acc: 96.64%
+2025-03-15 14:32:26,604 - INFO - Epoch: 69 | Batch: 250/269 | Loss: 0.1025 | Acc: 96.91%
+2025-03-15 14:37:37,394 - INFO - Epoch 69 | Train Loss: 0.2247 | Train Accuracy: 96.89%
+2025-03-15 14:37:37,395 - INFO - Epoch 69 | Valid Loss: 0.4392 | Valid Accuracy: 90.16% | Valid F1 Score: 0.8927
+2025-03-15 14:37:37,797 - INFO - Saved checkpoint at /kaggle/working/continued_training/checkpoint_epoch_69.pkl
+2025-03-15 14:37:37,798 - INFO - Current learning rate: 1.0000000000000002e-06
+2025-03-15 14:37:37,799 - INFO - Training completed. Best validation accuracy: 90.54%

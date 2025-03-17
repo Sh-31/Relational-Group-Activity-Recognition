@@ -140,7 +140,6 @@ def collate_fn(batch):
 def eval(root, config, checkpoint_path):
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
     person_classifer = PersonActivityClassifier(
         num_classes=config.model['num_classes']['person_activity']
     )
@@ -153,7 +152,6 @@ def eval(root, config, checkpoint_path):
 
     checkpoint = torch.load(checkpoint_path)
     model.load_state_dict(checkpoint["model_state_dict"])
-
     model = model.to(device)
 
     test_transforms = A.Compose([
@@ -177,7 +175,7 @@ def eval(root, config, checkpoint_path):
 
     test_loader = DataLoader(
         test_dataset,
-        batch_size=12,
+        batch_size=14,
         shuffle=True,
         num_workers=4,
         collate_fn=collate_fn,
@@ -251,6 +249,20 @@ def eval_with_TTA(root, config, checkpoint_path):
             ], p=1),
             A.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
             ToTensorV2()
+        ]),
+
+        A.Compose([
+            A.Resize(224, 224),
+            A.OneOf([
+                A.GaussianBlur(blur_limit=(3, 7)),
+                A.ColorJitter(brightness=0.2),
+                A.RandomBrightnessContrast(),
+                A.GaussNoise(),
+                A.MotionBlur(blur_limit=5), 
+                A.MedianBlur(blur_limit=5)  
+            ], p=1),
+            A.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+            ToTensorV2()
         ])
     ]
 
@@ -275,7 +287,7 @@ def eval_with_TTA(root, config, checkpoint_path):
 if __name__ == "__main__":
     ROOT = "/teamspace/studios/this_studio/Relational-Group-Activity-Recognition"
     CONFIG_PATH = f"{ROOT}/configs/temporal_models/RCRG_R2_C11_conc_temporal.yml"
-    MODEL_CHECKPOINT = f"{ROOT}/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_44.pkl"
+    MODEL_CHECKPOINT = f"{ROOT}/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V1_2025_03_10_07_07/checkpoint_epoch_33.pkl"
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--ROOT", type=str, default=ROOT,
@@ -289,5 +301,5 @@ if __name__ == "__main__":
     group_classifer = GroupActivityClassifer(person_classifer, 8, 'cpu')
     
     summary(group_classifer)
-    # eval(ROOT, CONFIG, MODEL_CHECKPOINT)
+    eval(ROOT, CONFIG, MODEL_CHECKPOINT)
     eval_with_TTA(ROOT, CONFIG, MODEL_CHECKPOINT)

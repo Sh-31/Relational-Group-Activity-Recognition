@@ -1,0 +1,24 @@
+2025-03-17 10:52:42,927 - 
+==================================================
+Group Activity B1-No-Relation-temporal eval on testset
+==================================================
+Accuracy : 88.93%
+Average Loss: 0.3826
+F1 Score (Weighted): 0.8890
+
+Classification Report:
+              precision    recall  f1-score   support
+
+       r_set       0.89      0.82      0.85       192
+     r_spike       0.92      0.92      0.92       173
+      r-pass       0.86      0.87      0.87       210
+  r_winpoint       0.92      0.79      0.85        87
+  l_winpoint       0.83      0.94      0.88       102
+      l-pass       0.88      0.93      0.91       226
+     l-spike       0.94      0.92      0.93       179
+       l_set       0.89      0.88      0.88       168
+
+    accuracy                           0.89      1337
+   macro avg       0.89      0.89      0.89      1337
+weighted avg       0.89      0.89      0.89      1337
+

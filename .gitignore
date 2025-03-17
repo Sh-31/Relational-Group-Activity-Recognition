@@ -3,4 +3,3 @@ data
 *.pkl
 __pycache__
 *.pyc
-experiments/temporal_models
