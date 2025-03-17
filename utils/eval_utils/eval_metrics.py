@@ -152,10 +152,6 @@ def model_eval_TTA(
             # pin_memory=params.get('pin_memory', True)
         )
         
-        import itertools
-
-        test_loader = itertools.islice(test_loader, 10)  # Limit to 5 batches
-
         transform_predictions = []
         transform_targets = []
     
