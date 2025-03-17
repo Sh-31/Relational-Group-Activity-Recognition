@@ -7,6 +7,7 @@ from trainer import ddp_train
 from utils.helper_utils import load_config
 from utils.data_utils import Group_Activity_DataSet, group_activity_labels
 from models.temporal_models.RCRG_R2_C11_conc_temporal_v3 import PersonActivityClassifier, GroupActivityClassifer, collate_fn
+# from models.temporal_models.RCRG_R2_C21_temporal import PersonActivityClassifier, GroupActivityClassifer, collate_fn
 
 import albumentations as A
 from albumentations.pytorch import ToTensorV2

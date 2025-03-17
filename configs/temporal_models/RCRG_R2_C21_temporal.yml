@@ -1,4 +1,4 @@
-# B1_temporal.yml
+# RCRG_R2_C21_temporal.yml
 
 model:        
   num_classes: 
@@ -10,12 +10,12 @@ model:
 
 training:    
   group_activity:
-    batch_size: 64
-    learning_rate: 0.00005 # 5e-5
+    batch_size: 4
+    learning_rate: 0.00003 # 3e-5
     epochs: 45
     optimizer: "AdamW"
     # momentum: 0.9
-    weight_decay: 0.01
+    weight_decay: 1
     label_smoothing: 0.01
     balance: False
     
@@ -31,10 +31,12 @@ data:
     test: [4, 5, 9, 11, 14, 20, 21, 25, 29, 34, 35, 37, 43, 44, 45, 47]
 
 experiment:
-  name: "B1_no_relations"
+  name: "RCRG_R2_C21_temporal"
   version: 1
   seed: 31
-  description: "In the first stage, Resnet50 is fined tuned and a person is represented with 
-2048-d features. In the second stage, each person is connected to a shared dense layer of 128 features, 
-then the person representations (each of length 128 features) are pooled, 
-then fed to a softmax layer for group activity classification."
+  description: "The first layer has 2 cliques, one per team.
+The second layer is all-pairs relations (1C). 
+RCRG-2R-21C-conc replaces the max pool strategy with concatenation pooling this also thrid
+Variation for the model means the there is lstm units one before relational layers and after.
+
+- Temporal: postfix is used to indicate model work with seqance of frames not a frame."

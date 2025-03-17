@@ -210,9 +210,9 @@ def eval(root, config, checkpoint_path):
 
 if __name__ == "__main__":
     ROOT = "/teamspace/studios/this_studio/Relational-Group-Activity-Recognition"
-    CONFIG_PATH = f"{ROOT}/configs/RCRG_R2_C11_conc_temporal.yml"
-    MODEL_CHECKPOINT = f"{ROOT}/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V3_2025_03_11_21_15/checkpoint_epoch_40.pkl"
-
+    CONFIG_PATH = f"{ROOT}/configs/temporal_models/RCRG_R2_C11_conc_temporal.yml"
+    MODEL_CHECKPOINT = f"{ROOT}/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V3_2025_03_11_21_15/checkpoint_epoch_75.pkl"
+   
     parser = argparse.ArgumentParser()
     parser.add_argument("--ROOT", type=str, default=ROOT,
                         help="Path to the root directory of the project")
@@ -226,3 +226,4 @@ if __name__ == "__main__":
     
     summary(group_classifer)
     eval(ROOT, CONFIG, MODEL_CHECKPOINT)
+    

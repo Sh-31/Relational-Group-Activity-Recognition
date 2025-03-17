@@ -198,10 +198,83 @@ def eval(root, config, checkpoint_path):
 
     return metrics
 
+def eval_with_TTA(root, config, checkpoint_path):
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    person_classifer = PersonActivityClassifier(
+        num_classes=config.model['num_classes']['person_activity']
+    )
+
+    model = GroupActivityClassifer(
+        person_feature_extraction=person_classifer, 
+        num_classes=config.model['num_classes']['group_activity'],
+        device=device
+    )
+
+    checkpoint = torch.load(checkpoint_path)
+    model.load_state_dict(checkpoint["model_state_dict"])
+    model = model.to(device)
+
+    dataset_params = {
+    'videos_path': f"{root}/{config.data['videos_path']}",
+    'annot_path': f"{root}/{config.data['annot_path']}",
+    'split': config.data['video_splits']['test'],
+    'labels': group_activity_labels,
+    'seq': True,
+    'sort': True,
+    'batch_size': 14,
+    'num_workers': 4,
+    'collate_fn': collate_fn,
+    'pin_memory': True
+    
+    }
+
+    tta_transforms = [
+        A.Compose([ #  transform (base)
+            A.Resize(224, 224),
+            A.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+            ToTensorV2()
+        ]),
+        
+        A.Compose([
+            A.Resize(224, 224),
+            A.OneOf([
+                A.GaussianBlur(blur_limit=(3, 7)),
+                A.ColorJitter(brightness=0.2),
+                A.RandomBrightnessContrast(),
+                A.GaussNoise(),
+                A.MotionBlur(blur_limit=5), 
+                A.MedianBlur(blur_limit=5)  
+            ], p=1),
+            A.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+            ToTensorV2()
+        ])
+    ]
+
+    criterion = nn.CrossEntropyLoss()
+    prefix = "Group Activity RCRG-R2-C11-conc-V2-TTA eval on testset"
+    path = str(Path(checkpoint_path).parent)
+
+    metrics = model_eval_TTA(
+        model=model,
+        dataset=Group_Activity_DataSet,
+        dataset_params=dataset_params,
+        tta_transforms=tta_transforms,
+        criterion=criterion,
+        path=path,
+        device=device,
+        prefix=prefix,
+        class_names=config.model["num_clases_label"]['group_activity']
+    )
+
+    return metrics
+
+
 if __name__ == "__main__":
     ROOT = "/teamspace/studios/this_studio/Relational-Group-Activity-Recognition"
-    CONFIG_PATH = f"{ROOT}/configs/RCRG_R2_C11_conc_temporal.yml"
-    MODEL_CHECKPOINT = f"{ROOT}/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V2_2025_03_10_07_06/checkpoint_epoch_24.pkl"
+    CONFIG_PATH = f"{ROOT}/configs/temporal_models/RCRG_R2_C11_conc_temporal.yml"
+    MODEL_CHECKPOINT = f"{ROOT}/experiments/temporal_models/RCRG_R2_C11_conc_temporal_V2_2025_03_10_07_06/checkpoint_epoch_60.pkl"
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--ROOT", type=str, default=ROOT,

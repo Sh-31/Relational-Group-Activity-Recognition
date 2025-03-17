@@ -115,7 +115,6 @@ def collate_fn(batch):
 def eval(root, config, checkpoint_path):
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
     person_classifer = PersonActivityClassifier(
         num_classes=config.model['num_classes']['person_activity']
     )
@@ -123,7 +122,6 @@ def eval(root, config, checkpoint_path):
     model = GroupActivityClassifer(
         person_feature_extraction=person_classifer, 
         num_classes=config.model['num_classes']['group_activity'],
-        device=device
     )
 
     checkpoint = torch.load(checkpoint_path)
@@ -152,7 +150,7 @@ def eval(root, config, checkpoint_path):
 
     test_loader = DataLoader(
         test_dataset,
-        batch_size=8,
+        batch_size=14,
         shuffle=True,
         num_workers=4,
         collate_fn=collate_fn,
@@ -177,8 +175,8 @@ def eval(root, config, checkpoint_path):
 
 if __name__ == "__main__":
     ROOT = "/teamspace/studios/this_studio/Relational-Group-Activity-Recognition"
-    CONFIG_PATH = f"{ROOT}/configs/B1.yml"
-    MODEL_CHECKPOINT = f"{ROOT}/experiments/B1_no_relations_V1_2025_03_08_01_07/checkpoint_epoch_19.pkl"
+    CONFIG_PATH = f"{ROOT}/configs/temporal_models/B1_temporal.yml"
+    MODEL_CHECKPOINT = f"{ROOT}/experiments/experiments/temporal_models/B1_no_relations_temporal_V1_2025_03_16_18_55/checkpoint_epoch_40.pkl"
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--ROOT", type=str, default=ROOT,
@@ -192,4 +190,4 @@ if __name__ == "__main__":
     group_classifer = GroupActivityClassifer(person_classifer, 8)
     
     summary(group_classifer)
-    #eval(ROOT, CONFIG, MODEL_CHECKPOINT)
+    eval(ROOT, CONFIG, MODEL_CHECKPOINT)
