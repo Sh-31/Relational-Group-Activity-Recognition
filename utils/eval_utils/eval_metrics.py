@@ -147,9 +147,9 @@ def model_eval_TTA(
             test_dataset,
             batch_size=params.get('batch_size', 12),
             shuffle=False,  # to keep order consistent
-            # num_workers=params.get('num_workers', 1),
+            num_workers=params.get('num_workers', 1),
             collate_fn=params.get('collate_fn', None),
-            # pin_memory=params.get('pin_memory', True)
+            pin_memory=params.get('pin_memory', True)
         )
         
         transform_predictions = []
