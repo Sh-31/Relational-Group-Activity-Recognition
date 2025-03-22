@@ -1,10 +1,9 @@
 """
-RCRG-R2-C11-conc-attention Description:
+RCRG_R1_C1 (RCRG-1R-1C) Description:
 --------------------------------
-Close to the RCRG-1R-1C variant, but uses 2 relational layers (2R) of sizes 256 and 128. 
-The graphs of these 2 layers are 1 clique (11C) of all people. -conc 
-postfix is used to indicate concatenation pooling instead of max-pooling.
-but this time using graph attentional operator instead of MLP.
+pretrained Resnet50 network is fined tuned and a person is represented with 4096-d features
+then a single relational layer (1R), all people in 1 clique (1C) so all-pairs relationships
+are learned but this time using graph attentional operator instead of MLP.
 """
 import sys
 from pathlib import Path
@@ -14,7 +13,6 @@ import torch
 import argparse
 import itertools
 import torch.nn as nn
-import torch.nn.functional as F
 import albumentations as A
 import torchvision.models as models
 from albumentations.pytorch import ToTensorV2
@@ -22,6 +20,7 @@ from torch.utils.data import DataLoader
 from torchinfo import summary
 from .relational_attention import RelationalUnit
 from utils import load_config, Group_Activity_DataSet, group_activity_labels, model_eval
+
 
 class PersonActivityClassifier(nn.Module):
     def __init__(self, num_classes):
@@ -58,51 +57,34 @@ class GroupActivityClassifer(nn.Module):
             for param in module.parameters():
                 param.requires_grad = False
 
-        self.r1 = RelationalUnit( # relational layer one
-            in_channels=2048, 
-            out_channels=128, 
-            heads=2
-        ) 
-
-        self.r2 = RelationalUnit( # relational layer two
-            in_channels=2048, 
-            out_channels=256, 
-            heads=4
-        ) 
-            
+        self.relational_layer = RelationalUnit(2048, 128, 2)       
+        self.pool = nn.AdaptiveMaxPool2d((1, 128))  
+        
         self.fc = nn.Sequential(
-            nn.Linear(12*384, 1024),
-            nn.BatchNorm1d(1024),
+            nn.Linear(256, 128),
+            nn.BatchNorm1d(128),
             nn.ReLU(),
-            nn.Dropout(0.7),
-            nn.Linear(1024, 512),
-            nn.BatchNorm1d(512),
-            nn.ReLU(),
-            nn.Dropout(0.7),
-            nn.Linear(512, num_classes), 
+            nn.Dropout(0.5),
+            nn.Linear(128, num_classes), 
         )
     
     def forward(self, x):
         b, bb, c, h, w = x.shape  # batch, bbox, channals, hight, width
         x = x.view(b*bb, c, h, w) # (b*bb, c, h, w)
         x = self.resnet50(x)      # (b*bb, 2048, 1, 1) 
+
         x = x.view(b, bb, -1)     # (b, bb, 2048)
-
-        # The frist and second layer has 1 cliques
         num_nodes = x.shape[1]    # all 12 player at one graph 
-        edge_index = torch.tensor([(i, j) for i, j in itertools.permutations(range(num_nodes), 2)]).t().to(self.device) # Generate all (i, j) pairs where i ≠ j
+        edge_index = torch.tensor([(i, j) for i, j in itertools.permutations(range(num_nodes), 2)]).t() # Generate all (i, j) pairs where i ≠ j
 
-        x1 = self.r1(x, edge_index)       # (b, bb, 128)
-        x2 = self.r2(x, edge_index)       # (b, bb, 256)
+        x = self.relational_layer(x, edge_index.to(self.device)) # (b, bb, 128)
 
-        # Apply additional layer-wise regularization during training
-        if self.training:
-            x1 = F.dropout2d(x1, p=0.2)  # Channel dropout
-            x1 = F.dropout2d(x2, p=0.2)  # Channel dropout
-
-        x = torch.concat([x1, x2], dim=2) # (b, bb, 384) 
-        x = x.view(b, -1)                 # (b, bb*384) 
-        x = self.fc(x)                    # (b, num_classes)
+        team_1 = self.pool(x[:, :6, :]) # (b, 1, 128) 
+        team_2 = self.pool(x[:, 6:, :]) # (b, 1, 128) 
+        
+        x = torch.concat([team_1, team_2], dim=1) # (b, 2, 128) 
+        x = x.view(b, -1)                         # (b, 256) 
+        x = self.fc(x)                            # (b, num_classes)
 
         return x 
 
@@ -164,7 +146,7 @@ def eval(root, config, checkpoint_path):
         split=config.data['video_splits']['test'],
         labels=group_activity_labels,
         transform=test_transforms,
-        seq=False,
+        seq=True,
         sort=True
     )
 
@@ -178,7 +160,7 @@ def eval(root, config, checkpoint_path):
     )
     
     criterion = nn.CrossEntropyLoss()
-    prefix = "Group Activity RCRG-R2-C11-conc-attention eval on testset"
+    prefix = "Group Activity RCRG-R1-C1 eval on testset"
     path = str(Path(checkpoint_path).parent)
 
     metrics = model_eval(
@@ -196,9 +178,9 @@ def eval(root, config, checkpoint_path):
 
 if __name__ == "__main__":
     ROOT = "/teamspace/studios/this_studio/Relational-Group-Activity-Recognition"
-    CONFIG_PATH = f"{ROOT}/configs/"
-    MODEL_CHECKPOINT = f"{ROOT}/experiments/"
-
+    CONFIG_PATH = f"{ROOT}/configs/RCRG_R1_C1.yml"
+    # MODEL_CHECKPOINT_UNTUNED = f"{ROOT}/experiments/single_frame_models/RCRG_R1_C1_untuned_V1_2025_03_08_01_51/checkpoint_epoch_11.pkl"
+    MODEL_CHECKPOINT = f"{ROOT}/experiments/single_frame_models/RCRG_R1_C1_V1_2025_03_10_00_19/checkpoint_epoch_23.pkl"
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--ROOT", type=str, default=ROOT,
@@ -206,10 +188,10 @@ if __name__ == "__main__":
     parser.add_argument("--config_path", type=str, default=CONFIG_PATH,
                         help="Path to the YAML configuration file")
 
-    # CONFIG = load_config(CONFIG_PATH)
+    CONFIG = load_config(CONFIG_PATH)
 
     person_classifer = PersonActivityClassifier(9)
     group_classifer = GroupActivityClassifer(person_classifer, 8, 'cpu')
     
-    summary(group_classifer, input_size=(2, 12, 3, 224, 224))
-    # eval(ROOT, CONFIG, MODEL_CHECKPOINT)
+    summary(group_classifer)
+    eval(ROOT, CONFIG, MODEL_CHECKPOINT)
