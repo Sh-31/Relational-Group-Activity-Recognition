@@ -1,0 +1,23 @@
+2025-03-24 02:37:52,204 - 
+==================================================
+Group Activity B1-No-Relation-TTA eval on testset (with TTA - 4 transforms)
+==================================================
+Accuracy : 89.06%
+Average Loss: 0.4055
+F1 Score (Weighted): 0.8905
+
+Classification Report:
+              precision    recall  f1-score   support
+
+       r_set       0.90      0.80      0.85      1728
+     r_spike       0.92      0.90      0.91      1557
+      r-pass       0.82      0.91      0.87      1890
+  r_winpoint       0.89      0.92      0.91       783
+  l_winpoint       0.94      0.94      0.94       918
+      l-pass       0.88      0.93      0.91      2034
+     l-spike       0.93      0.88      0.90      1611
+       l_set       0.90      0.87      0.89      1512
+
+    accuracy                           0.89     12033
+   macro avg       0.90      0.89      0.89     12033
+weighted avg       0.89      0.89      0.89     12033
