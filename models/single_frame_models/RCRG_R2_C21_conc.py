@@ -236,7 +236,7 @@ def eval_with_TTA(root, config, checkpoint_path):
             A.OneOf([
                 A.GaussianBlur(blur_limit=(3, 7)),
                 A.ColorJitter(brightness=0.2),
-            ], p=0.75),
+            ], p=0.55),
             A.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
             ToTensorV2()
         ]),
@@ -246,7 +246,7 @@ def eval_with_TTA(root, config, checkpoint_path):
             A.OneOf([
                 A.RandomBrightnessContrast(),
                 A.GaussNoise()
-            ], p=0.75),
+            ], p=0.55),
             A.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
             ToTensorV2()
         ]), 
@@ -256,7 +256,7 @@ def eval_with_TTA(root, config, checkpoint_path):
             A.OneOf([
                 A.MotionBlur(blur_limit=5), 
                 A.MedianBlur(blur_limit=5)  
-            ], p=0.75),
+            ], p=0.55),
             A.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
             ToTensorV2()
         ])
