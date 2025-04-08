@@ -57,7 +57,7 @@ class GroupActivityClassifer(nn.Module):
             for param in module.parameters():
                 param.requires_grad = False
 
-        self.relational_layer = RelationalUnit(2048, 128, 2)       
+        self.relational_layer = RelationalUnit(2048, 128)       
         self.pool = nn.AdaptiveMaxPool2d((1, 128))  
         
         self.fc = nn.Sequential(
@@ -188,10 +188,10 @@ if __name__ == "__main__":
     parser.add_argument("--config_path", type=str, default=CONFIG_PATH,
                         help="Path to the YAML configuration file")
 
-    CONFIG = load_config(CONFIG_PATH)
+    # CONFIG = load_config(CONFIG_PATH)
 
     person_classifer = PersonActivityClassifier(9)
     group_classifer = GroupActivityClassifer(person_classifer, 8, 'cpu')
     
-    summary(group_classifer)
-    eval(ROOT, CONFIG, MODEL_CHECKPOINT)
+    summary(group_classifer, input_size=(2, 12, 3, 224, 224))
+    # eval(ROOT, CONFIG, MODEL_CHECKPOINT)

@@ -1,12 +1,10 @@
 """
-RCRG-R2-C11-conc-temporal (RCRG-2R-11C-conc) Description:
+RCRG-R3-C421-attention Description:
 --------------------------------
-Uses 2 relational layers (2R) of sizes 256 and 128. 
-The graphs of these 2 layers are 1 clique (11C) of all people. 
-but this time using graph attentional operator instead of MLP for relational layers.
-
-- Conc: postfix is used to indicate concatenation pooling instead of max-pooling.
-- Temporal: postfix is used to indicate model work with seqance of frames not a frame.
+There relational layers (of sizes 512, 256 and 128) 
+with clique sizes of the layers set to (4, 2, 1).
+The first layer has 4 cliques, with each team divided into 2 cliques.
+but this time using graph attentional operator instead of MLP.
 """
 import sys
 from pathlib import Path
@@ -69,8 +67,7 @@ class GroupActivityClassifer(nn.Module):
             in_channels=2048, 
             out_channels=256, 
         ) 
-
-        self.layer_norm = nn.LayerNorm(384) 
+            
         self.lstm = nn.LSTM(
             input_size=384,
             hidden_size=384,
@@ -96,14 +93,17 @@ class GroupActivityClassifer(nn.Module):
         edge_index = torch.tensor([(i, j) for i, j in itertools.permutations(range(num_nodes), 2)]).t().to(self.device) # Generate all (i, j) pairs where i ≠ j
 
         x1 = self.r1(x, edge_index)       # (b*seq, bb, 128)
-        x2 = self.r2(x, edge_index)       # (b*seq, bb, 256)    
-        x = torch.concat([x1, x2], dim=2) # (b*seq, bb, 384) 
+        x2 = self.r2(x, edge_index)       # (b*seq, bb, 256)
         
+        if self.training:
+            x1 = F.dropout(x1, p=0.2)  
+            x2 = F.dropout(x2, p=0.2)  
+        
+        x = torch.concat([x1, x2], dim=2) # (b*seq, bb, 384) 
+
         x = x.view(b*bb, seq, -1)         # (b*bb, seq, 384)
-        x = self.layer_norm(x)            # (b*bb, seq, 384)
         x, (h, c) = self.lstm(x)          # (b*bb, seq, 384)
         x = x[:, -1, :]                   # (b*bb, 384)
-       
         x = x.view(b, -1)                 # (b, bb*384) 
         x = self.fc(x)                    # (b, num_classes)
 
@@ -283,8 +283,8 @@ def eval_with_TTA(root, config, checkpoint_path):
 
 if __name__ == "__main__":
     ROOT = "/teamspace/studios/this_studio/Relational-Group-Activity-Recognition"
-    CONFIG_PATH = f"{ROOT}/configs/attention_models/RCRG_R2_C11_conc_temporal.yml"
-    MODEL_CHECKPOINT = f"{ROOT}/experiments/attention_models/RCRG_R2_C11_conc_attention_V1_2025_03_24_04_24/checkpoint_epoch_44.pkl"
+    CONFIG_PATH = f"{ROOT}/"
+    MODEL_CHECKPOINT = f"{ROOT}/"
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--ROOT", type=str, default=ROOT,
@@ -292,13 +292,11 @@ if __name__ == "__main__":
     parser.add_argument("--config_path", type=str, default=CONFIG_PATH,
                         help="Path to the YAML configuration file")
 
-    # CONFIG = load_config(CONFIG_PATH)
+    CONFIG = load_config(CONFIG_PATH)
 
     person_classifer = PersonActivityClassifier(9)
     group_classifer = GroupActivityClassifer(person_classifer, 8, 'cpu')
-
-    print(group_classifer(torch.randn(2, 12, 9, 3, 224, 224)))
     
-    summary(group_classifer, input_size=(2, 12, 9, 3, 224, 224))
+    # summary(group_classifer, input_size=(2, 12, 9, 3, 224, 224))
     # eval(ROOT, CONFIG, MODEL_CHECKPOINT)
     # eval_with_TTA(ROOT, CONFIG, MODEL_CHECKPOINT)
