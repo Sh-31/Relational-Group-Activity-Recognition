@@ -25,27 +25,27 @@ class RelationalUnit(MessagePassing):
         x: Node feature matrix [num_nodes, in_channels]
         edge_index: Connectivity matrix [2, num_edges]
         """
-        batch_size, num_nodes, in_channels = x.shape
-        x = x.view(batch_size * num_nodes, in_channels)
-
         x = self.linear(x)
-        out = self.propagate(edge_index, x=x)
+        return self.propagate(edge_index, x=x)
 
-        out = out.view(batch_size, num_nodes, -1)
-        return out
-
-
-    def message(self, x_i, x_j, index):
+    def message(self, x_i, x_j, index, ptr, size_i):
         """
         x_i: Features of the receiving node
         x_j: Features of the sending node
         """
         z = self.mlp(x_i + x_j)
-        e_ij = (self.projection(x_i) * z).sum(dim=-1, keepdim=True) # (b*num_edage, 1)
+        # print(f"x_j.shape: {x_j.shape}")
+        e_ij = (self.projection(x_i) * z).sum(dim=-1) # (b, num_edage)
+        # print(f"e_ij.shape: {e_ij.shape}")
         
         # Normalize the attention scores with softmax over the destination nodes.
-        a_ij = softmax(e_ij, index)  # (b*num_edage, 1)
-        return a_ij * z
+        a_ij = softmax(e_ij, index, ptr, num_nodes=size_i, dim=-1)  # (b, num_edage)
+
+        # print(f"a_ij.shape: {a_ij.shape}")
+        # print(f"z.shape: {z.shape}")
+        # print(a_ij)
+     
+        return a_ij.unsqueeze(-1) * z
     
     def update(self, aggr_out):
         return aggr_out 
