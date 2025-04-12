@@ -308,3 +308,116 @@ class Group_Activity_DataSet(Dataset):
              labels = torch.stack(labels)
 
              return clip, labels
+
+class Group_Activity_DataSet_END2END(Dataset):
+    def __init__(self, videos_path: str, annot_path: str,
+                 split: list = [], labels: dict = {}, 
+                 transform=None):
+        """
+        Args:
+            videos_path: Path to video frames
+            annot_path: Path to annotations file
+            split: List of clip IDs to use
+            labels: Group and Person activity labels dictionary
+            transform:  transform to apply
+        """
+        self.videos_path = Path(videos_path)
+        self.transform = transform
+        self.labels = labels
+        
+        # Load annotations and store only metadata
+        with open(annot_path, 'rb') as f:
+            videos_annot = pickle.load(f)
+            
+        self.data = []
+        for clip_id in split:
+            clip_dirs = videos_annot[str(clip_id)]
+            
+            for clip_dir in clip_dirs.keys():
+                category = clip_dirs[str(clip_dir)]['category']
+                dir_frames = list(clip_dirs[str(clip_dir)]['frame_boxes_dct'].items())
+                
+                frames_data = []
+
+                for frame_id , boxes in dir_frames:
+
+                    frame_path = f"{videos_path}/{str(clip_id)}/{str(clip_dir)}/{frame_id}.jpg"
+
+                    frame_boxes = []
+                    for box in boxes:
+                        frame_boxes.append(box)
+
+                    frames_data.append((frame_path, frame_boxes))
+                
+                self.data.append({
+                    'frames_data':frames_data,
+                    'category': category,
+                })      
+      
+    def __len__(self):
+        return len(self.data)
+    
+    def _calculate_box_center(self, box: BoxInfo):
+    
+        x_min, y_min, x_max, y_max = box
+        x_center = (x_min + x_max) / 2
+
+        return  x_center
+
+    def extract_person_crops(self, frame: np.ndarray, boxes: List[BoxInfo]):
+        """Extract and transform person crops from frame"""
+        crops: List = []
+        order: List = []
+        person_frame_labels : List = []
+
+        for box in boxes:
+            x_min, y_min, x_max, y_max = box.box
+            x_center = self._calculate_box_center(box.box)
+          
+            person_crop = frame[y_min:y_max, x_min:x_max]
+        
+            if self.transform:
+                transformed = self.transform(image=person_crop)
+                person_crop = transformed['image']
+
+            person_label = torch.zeros(len(self.labels['person']))
+            person_label[self.labels['person'][box.category]] = 1    
+            
+            crops.append(person_crop)
+            order.append(x_center)
+            person_frame_labels.append(person_label)
+        
+        return crops, order, person_frame_labels
+                    
+    def __getitem__(self, idx):
+        sample = self.data[idx]
+        group_num_class = len(self.labels['group'])
+        group_label = torch.zeros(group_num_class) 
+        group_label[self.labels['group'][sample['category']]] = 1
+
+        clip = []
+        group_labels = []
+        person_labels = []
+    
+        for frame_path, boxes in sample['frames_data']:
+            frame = cv2.imread(frame_path)
+        
+            crops, order, frame_labels = self.extract_person_crops(frame, boxes) 
+       
+            sorted_pairs = sorted(zip(order, crops, frame_labels), key=lambda pair: pair[0])
+            sorted_crops = [crop for _, crop, _ in sorted_pairs]
+            sorted_labels = [label for _, _, label in sorted_pairs]
+                        
+            crops = torch.stack(sorted_crops)
+            sorted_labels = torch.stack(sorted_labels)
+            person_labels.append(sorted_labels) 
+    
+            clip.append(crops)
+            group_labels.append(group_label)
+    
+        # Rearrange dimensions to (12, 9, C, H, W) for clip_frames_tensor  
+        clip = torch.stack(clip).permute(1, 0, 2, 3, 4) 
+        group_labels = torch.stack(group_labels)
+        person_labels = torch.stack(person_labels).permute(1, 0, 2) 
+
+        return clip, person_labels, group_labels
