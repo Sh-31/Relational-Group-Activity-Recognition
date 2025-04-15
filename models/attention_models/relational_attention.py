@@ -6,46 +6,105 @@ from torch_geometric.nn import MessagePassing
 from torch_geometric.nn import GATConv 
 from torch_geometric.utils import softmax
 
+class BatchNorm1d(nn.Module):
+    def __init__(self, num_features):
+        super().__init__()
+        self.bn = nn.BatchNorm1d(num_features)
+
+    def forward(self, x):
+        # x is expected to be [B, N, C] where C is the feature dimension
+        # Transpose to [B, C, N]
+        x_permuted = x.transpose(1, 2)
+        # Apply BatchNorm1d on the channel dimension (dim=1)
+        x_bn = self.bn(x_permuted)
+        # Transpose back to [B, N, C]
+        return x_bn.transpose(1, 2)
+
+
 class RelationalUnit(MessagePassing):
     def __init__(self, in_channels, out_channels, hidden_dim=1024):
         super(RelationalUnit, self).__init__(aggr='add')  # Sum aggregation
+          
+        self.proj  = nn.Linear(in_channels,  out_channels)
+        self.query = nn.Linear(in_channels,  hidden_dim)
+        self.key   = nn.Linear(in_channels,  hidden_dim)
         
-        self.linear = nn.Linear(in_channels, hidden_dim)
-        self.projection =  nn.Linear(hidden_dim, out_channels)
-
-        self.mlp = nn.Sequential(  # MLP shared across all node pairs
-           nn.Linear(hidden_dim, hidden_dim // 2),
-           nn.ReLU(),
-           nn.Dropout(0.5),
-           nn.Linear(hidden_dim // 2, out_channels)
+        self.attention_dropout = nn.Dropout(0.35)
+        
+        self.mlp = nn.Sequential(
+            nn.Linear(2 * in_channels, in_channels),
+            BatchNorm1d(in_channels),
+            nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(in_channels, hidden_dim),
+            BatchNorm1d(hidden_dim),
+            nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(hidden_dim, out_channels)
         )
+       
+        # gate mechanism to fuse new message and residual connection.
+        self.keep_gate = nn.Sequential(   # keep gate
+            nn.Linear(in_channels + out_channels, out_channels),
+            nn.Sigmoid()
+        )
+
+        self.forget_gate = nn.Sequential( # forget gate
+            nn.Linear(in_channels + out_channels, out_channels),
+            nn.Sigmoid()
+        )
+
+        self.update_gate = nn.Sequential( # update gate
+            nn.Linear(in_channels + out_channels, out_channels),
+            nn.Sigmoid()
+        )
+
+        self.act_drop = nn.Sequential(
+             nn.ReLU(),
+             nn.Dropout(0.25)
+        )    
+
 
     def forward(self, x, edge_index):
         """
         x: Node feature matrix [num_nodes, in_channels]
         edge_index: Connectivity matrix [2, num_edges]
         """
-        x = self.linear(x)
-        return self.propagate(edge_index, x=x)
+        out = self.propagate(edge_index, x=x)
+        out = self.attention_dropout(out)
+
+        gate_input = torch.cat([x, out], dim=-1)
+        
+        k_gate = self.keep_gate(gate_input)
+        f_gate = self.forget_gate(gate_input)
+        u_gate = self.update_gate(gate_input)
+
+        x = self.proj(x) # to align the dimension
+
+        out = k_gate * x + f_gate * out
+        out = u_gate * out
+
+        return self.act_drop(out)
 
     def message(self, x_i, x_j, index, ptr, size_i):
         """
         x_i: Features of the receiving node
         x_j: Features of the sending node
         """
-        z = self.mlp(x_i + x_j)
-        # print(f"x_j.shape: {x_j.shape}")
-        e_ij = (self.projection(x_i) * z).sum(dim=-1) # (b, num_edage)
-        # print(f"e_ij.shape: {e_ij.shape}")
-        
-        # Normalize the attention scores with softmax over the destination nodes.
-        a_ij = softmax(e_ij, index, ptr, num_nodes=size_i, dim=-1)  # (b, num_edage)
+        query= self.query(x_i)
+        key = self.key(x_j)       
+        value = self.mlp(torch.cat([x_i , x_j], dim=-1))
 
+        e_ij = (query* key).sum(dim=-1) / (key.size(-1) ** 0.5)    # (b, num_edage)
+        a_ij = softmax(e_ij, index, ptr, num_nodes=size_i, dim=-1)  # Normalize the attention scores with softmax over the destination nodes.
+        
+        # print(f"x_j.shape: {x_j.shape}")
+        # print(f"e_ij.shape: {e_ij.shape}")
         # print(f"a_ij.shape: {a_ij.shape}")
         # print(f"z.shape: {z.shape}")
         # print(a_ij)
-     
-        return a_ij.unsqueeze(-1) * z
+        
+        return a_ij.unsqueeze(-1) * value
     
     def update(self, aggr_out):
         return aggr_out 

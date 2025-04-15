@@ -23,15 +23,17 @@ from albumentations.pytorch import ToTensorV2
 from torch.utils.data import DataLoader
 from torchinfo import summary
 from .relational_attention import RelationalUnit
-from utils import load_config, Group_Activity_DataSet, group_activity_labels, model_eval, model_eval_TTA
+from utils import load_config, Group_Activity_DataSet_END2END, activities_labels, model_eval, model_eval_TTA
 
 class PersonActivityClassifier(nn.Module):
     def __init__(self, num_classes):
         super(PersonActivityClassifier, self).__init__()
         
-        self.resnet50 = nn.Sequential(
-            *list(models.resnet50(weights=models.ResNet50_Weights.DEFAULT).children())[:-1]
-        )
+        self.resnet50 = models.resnet50(weights=models.ResNet50_Weights.DEFAULT)
+        for param in self.resnet50.parameters():
+            param.requires_grad = False
+                
+        self.resnet50 = nn.Sequential(*list(self.resnet50.children())[:-1])
 
         self.fc = nn.Sequential(
             nn.Linear(2048, 1024),
@@ -42,11 +44,13 @@ class PersonActivityClassifier(nn.Module):
         )
     
     def forward(self, x):
+        
         b, bb, c, h, w = x.shape  # x.shape => batch, bbox, channals , hight, width
         x = x.view(b*bb, c, h, w) # (batch * bbox, c, h, w)
         x = self.resnet50(x)      # (batch * bbox, 2048, 1 , 1)
         x = x.view(b*bb, -1)      # (batch * bbox, 2048)
         x = self.fc(x)            # (batch * bbox, num_class)          
+       
         return x
 
 class GroupActivityClassifer(nn.Module):
@@ -55,10 +59,7 @@ class GroupActivityClassifer(nn.Module):
 
         self.device = device
         self.resnet50 = person_feature_extraction.resnet50
-        
-        for module in [self.resnet50]:
-            for param in module.parameters():
-                param.requires_grad = False
+        self.fc_1 = person_feature_extraction.fc
 
         self.r1 = RelationalUnit( # relational layer one
             in_channels=2048, 
@@ -77,7 +78,7 @@ class GroupActivityClassifer(nn.Module):
             batch_first=True
         ) 
 
-        self.fc = nn.Sequential(
+        self.fc_2 = nn.Sequential(
             nn.Linear(12*384, 512),
             nn.BatchNorm1d(512),
             nn.ReLU(),
@@ -86,13 +87,15 @@ class GroupActivityClassifer(nn.Module):
         )
     
     def forward(self, x):
-        b, bb, seq, c, h, w = x.shape # batch, bbox, frames, channals, hight, width
-        x = x.view(b*bb*seq, c, h, w) # (b*bb*seq, c, h, w)
-        x = self.resnet50(x)          # (b*bb*seq, 2048, 1, 1) 
-        x = x.view(b*seq, bb, -1)     # (b*seq, bb, 2048) 
-
+        b, bb, seq, c, h, w = x.shape   # batch, bbox, frames, channals, hight, width
+        x = x.view(b*bb*seq, c, h, w)   # (b*bb*seq, c, h, w)
+        x = self.resnet50(x)            # (b*bb*seq, 2048, 1, 1) 
+        x_p = x.view(b*bb, seq, -1)     # (b*bb, seq, 2048) 
+        y1 = self.fc_1(x_p[:, -1, :])   # (b*bb, person_num_classes)
+        
         # The frist and second relation layer has 1 cliques
-        num_nodes = x.shape[1]    # all 12 player at one graph 
+        x = x.view(b*seq, bb, -1)         # (b*seq, bb, 2048) 
+        num_nodes = x.shape[1]            # all 12 player at one graph 
         edge_index = torch.tensor([(i, j) for i, j in itertools.permutations(range(num_nodes), 2)]).t().to(self.device) # Generate all (i, j) pairs where i ≠ j
 
         x1 = self.r1(x, edge_index)       # (b*seq, bb, 128)
@@ -104,34 +107,43 @@ class GroupActivityClassifer(nn.Module):
         x, (h, c) = self.lstm(x)          # (b*bb, seq, 384)
         x = x[:, -1, :]                   # (b*bb, 384)
        
-        x = x.view(b, -1)                 # (b, bb*384) 
-        x = self.fc(x)                    # (b, num_classes)
+        x = x.contiguous().view(b, -1)    # (b, bb*384) 
+        y2 = self.fc_2(x)                 # (b, num_classes)
 
-        return x 
+        return {'person_output': y1, 'group_output': y2}
 
 def collate_fn(batch):
     """
     collate function to pad bounding boxes to 12 per frame and selecting the last frame label. 
     """
-    clips, labels = zip(*batch)  
+    clips, person_labels, group_labels  = zip(*batch)  
     
     max_bboxes = 12  
     padded_clips = []
+    padded_person_labels = []
 
-    for clip in clips:
+    for clip, label in zip(clips, person_labels):
         num_bboxes = clip.size(0)
         if num_bboxes < max_bboxes:
             clip_padding = torch.zeros((max_bboxes - num_bboxes, clip.size(1), clip.size(2), clip.size(3), clip.size(4)))
+            label_padding = torch.zeros((max_bboxes - num_bboxes, label.size(1), label.size(2)))
+            
             clip = torch.cat((clip, clip_padding), dim=0)
-    
+            label = torch.cat((label, label_padding), dim=0)
+            
         padded_clips.append(clip)
-       
+        padded_person_labels.append(label)
+    
     padded_clips = torch.stack(padded_clips)
-    labels = torch.stack(labels)
+    padded_person_labels = torch.stack(padded_person_labels)
+    group_labels = torch.stack(group_labels)
     
-    labels = labels[:,-1, :] # utils the label of last frame
-    
-    return padded_clips, labels
+    group_labels = group_labels[:,-1, :] # # utils the label of last frame
+    padded_person_labels = padded_person_labels[:, :, -1, :]  # utils the label of last frame for each player
+    b, bb, num_class = padded_person_labels.shape # batch, bbox, num_clases
+    padded_person_labels = padded_person_labels.view(b*bb, num_class)
+
+    return padded_clips, padded_person_labels, group_labels
 
 def eval(root, config, checkpoint_path):
 
@@ -160,14 +172,12 @@ def eval(root, config, checkpoint_path):
         ToTensorV2()
     ])
     
-    test_dataset = Group_Activity_DataSet(
+    test_dataset = Group_Activity_DataSet_END2END(
         videos_path=f"{root}/{config.data['videos_path']}",
         annot_path=f"{root}/{config.data['annot_path']}",
         split=config.data['video_splits']['test'],
-        labels=group_activity_labels,
+        labels=activities_labels,
         transform=test_transforms,
-        seq=True,
-        sort=True
     )
 
     test_loader = DataLoader(
@@ -180,7 +190,7 @@ def eval(root, config, checkpoint_path):
     )
     
     criterion = nn.CrossEntropyLoss()
-    prefix = "Group Activity RCRG-R2-C11-conc-temporal-attention-v2 eval on testset"
+    prefix = "Group Activity RCRG-R2-C11-conc-temporal-attention eval on testset"
     path = str(Path(checkpoint_path).parent)
 
     metrics = model_eval(
@@ -190,6 +200,7 @@ def eval(root, config, checkpoint_path):
         device=device, 
         path=path, 
         prefix=prefix, 
+        END2END=True,
         class_names=config.model["num_clases_label"]['group_activity']
     )
 
@@ -217,14 +228,11 @@ def eval_with_TTA(root, config, checkpoint_path):
     'videos_path': f"{root}/{config.data['videos_path']}",
     'annot_path': f"{root}/{config.data['annot_path']}",
     'split': config.data['video_splits']['test'],
-    'labels': group_activity_labels,
-    'seq': True,
-    'sort': True,
+    'labels': activities_labels,
     'batch_size': 14,
     'num_workers': 4,
     'collate_fn': collate_fn,
     'pin_memory': True
-    
     }
 
     tta_transforms = [
@@ -264,18 +272,19 @@ def eval_with_TTA(root, config, checkpoint_path):
     ]
 
     criterion = nn.CrossEntropyLoss()
-    prefix = "Group Activity RCRG-R2-C11-conc-V2-TTA eval on testset"
+    prefix = "Group Activity RCRG-R2-C11-conc-TTA eval on testset"
     path = str(Path(checkpoint_path).parent)
 
     metrics = model_eval_TTA(
         model=model,
-        dataset=Group_Activity_DataSet,
+        dataset=Group_Activity_DataSet_END2END,
         dataset_params=dataset_params,
         tta_transforms=tta_transforms,
         criterion=criterion,
         path=path,
         device=device,
         prefix=prefix,
+        END2END=True,
         class_names=config.model["num_clases_label"]['group_activity']
     )
 
@@ -284,7 +293,7 @@ def eval_with_TTA(root, config, checkpoint_path):
 if __name__ == "__main__":
     ROOT = "/teamspace/studios/this_studio/Relational-Group-Activity-Recognition"
     CONFIG_PATH = f"{ROOT}/configs/attention_models/RCRG_R2_C11_conc_temporal.yml"
-    MODEL_CHECKPOINT = f"{ROOT}/experiments/attention_models/RCRG_R2_C11_conc_attention_V1_2025_03_24_04_24/checkpoint_epoch_44.pkl"
+    MODEL_CHECKPOINT = f"{ROOT}/experiments/attention_models/RCRG_R2_C11_conc_attention_V1_2025_04_13_03_09/Best_Model.pkl"
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--ROOT", type=str, default=ROOT,
@@ -292,13 +301,11 @@ if __name__ == "__main__":
     parser.add_argument("--config_path", type=str, default=CONFIG_PATH,
                         help="Path to the YAML configuration file")
 
-    # CONFIG = load_config(CONFIG_PATH)
+    CONFIG = load_config(CONFIG_PATH)
 
     person_classifer = PersonActivityClassifier(9)
     group_classifer = GroupActivityClassifer(person_classifer, 8, 'cpu')
-
-    print(group_classifer(torch.randn(2, 12, 9, 3, 224, 224)))
     
-    summary(group_classifer, input_size=(2, 12, 9, 3, 224, 224))
+    # summary(group_classifer, input_size=(2, 12, 9, 3, 224, 224))
     # eval(ROOT, CONFIG, MODEL_CHECKPOINT)
     # eval_with_TTA(ROOT, CONFIG, MODEL_CHECKPOINT)

@@ -42,7 +42,7 @@ def plot_confusion_matrix(y_true, y_pred, class_names, save_path=None):
     return fig
 
 
-def model_eval(model, data_loader, criterion=None, path="", device=None, prefix="Group Activity Test Set Classification Report", class_names=None, log_path="evaluation.log"):
+def model_eval(model, data_loader, criterion=None, path="", device=None, prefix="Group Activity Test Set Classification Report", class_names=None, log_path="evaluation.log", END2END=False):
     
     logging.basicConfig(
         filename=f"{path}/{log_path}", 
@@ -55,22 +55,41 @@ def model_eval(model, data_loader, criterion=None, path="", device=None, prefix=
     y_true = []
     y_pred = []
     total_loss = 0.0
-
-    with torch.no_grad(): 
-        for inputs, targets in data_loader:
-            inputs, targets = inputs.to(device), targets.to(device)
-            
-            outputs = model(inputs)
-            
-            if criterion:
-                loss = criterion(outputs, targets)
-                total_loss += loss.item()
-            
-            _, predicted = outputs.max(1)
-            _, target_class = targets.max(1)
-            
-            y_true.extend(target_class.cpu().numpy())
-            y_pred.extend(predicted.cpu().numpy())
+    
+    if END2END:
+        with torch.no_grad():
+            for inputs, person_labels, group_labels in data_loader:
+                inputs = inputs.to(device)
+                person_labels = person_labels.to(device)
+                group_labels = group_labels.to(device)
+                
+                outputs = model(inputs)
+                loss_1 = criterion(outputs['person_output'], person_labels)
+                loss_2 = criterion(outputs['group_output'], group_labels)
+                
+                total_loss += (loss_2 + (0.60 * loss_1)).item()
+                
+                _, predicted = outputs['group_output'].max(1)
+                _, target_class = group_labels.max(1)
+    
+                y_true.extend(target_class.cpu().numpy())
+                y_pred.extend(predicted.cpu().numpy()) 
+    else:
+        with torch.no_grad(): 
+            for inputs, targets in data_loader:
+                inputs, targets = inputs.to(device), targets.to(device)
+                
+                outputs = model(inputs)
+                
+                if criterion:
+                    loss = criterion(outputs, targets)
+                    total_loss += loss.item()
+                
+                _, predicted = outputs.max(1)
+                _, target_class = targets.max(1)
+                
+                y_true.extend(target_class.cpu().numpy())
+                y_pred.extend(predicted.cpu().numpy())
 
     report_dict = classification_report(y_true, y_pred, target_names=class_names, output_dict=True)
     accuracy = report_dict.get("accuracy", 0) * 100
@@ -110,6 +129,7 @@ def model_eval_TTA(
     device=None, 
     prefix="Group Activity Test Set Classification Report", 
     class_names=None, 
+    END2END=False,
     log_path="TTA-evaluation.log"
     ):
 
@@ -132,16 +152,25 @@ def model_eval_TTA(
         params = dataset_params.copy()
         params['transform'] = transform
         
-        test_dataset = dataset(
-            videos_path=params['videos_path'],
-            annot_path=params['annot_path'],
-            split=params['split'],
-            labels=params['labels'],
-            transform=params['transform'],
-            seq=params.get('seq', True),
-            sort=params.get('sort', True),
-            only_tar=params.get('only_tar', False)
-        )
+        if END2END:
+            test_dataset = dataset(
+                videos_path=params['videos_path'],
+                annot_path=params['annot_path'],
+                split=params['split'],
+                labels=params['labels'],
+                transform=params['transform'],
+            )
+        else:    
+            test_dataset = dataset(
+                videos_path=params['videos_path'],
+                annot_path=params['annot_path'],
+                split=params['split'],
+                labels=params['labels'],
+                transform=params['transform'],
+                seq=params.get('seq', True),
+                sort=params.get('sort', True),
+                only_tar=params.get('only_tar', False)
+            )
         
         test_loader = DataLoader(
             test_dataset,
@@ -155,18 +184,33 @@ def model_eval_TTA(
         transform_predictions = []
         transform_targets = []
     
-        with torch.no_grad():
-            for batch_idx, (inputs, targets) in enumerate(test_loader):
-                inputs = inputs.to(device)
-                targets = targets.to(device)  
-                
-                outputs = model(inputs)
-                
-                transform_predictions.extend(outputs.cpu().tolist())
-                transform_targets.extend(targets.cpu().tolist())
+        if END2END:
+            with torch.no_grad():
+                for inputs, person_labels, group_labels in test_loader:
+                    inputs = inputs.to(device)
+                    person_labels = person_labels.to(device)
+                    group_labels = group_labels.to(device)
+                    
+                    outputs = model(inputs)
+                    
+                    transform_predictions.extend(outputs['group_output'].cpu().tolist())
+                    transform_targets.extend(group_labels.cpu().tolist())
+        
+            all_predictions.append(torch.tensor(transform_predictions))
+            all_targets.append(torch.tensor(transform_targets))
+        else:
+            with torch.no_grad():
+                for batch_idx, (inputs, targets) in enumerate(test_loader):
+                    inputs = inputs.to(device)
+                    targets = targets.to(device)  
+                    
+                    outputs = model(inputs)
+                    
+                    transform_predictions.extend(outputs.cpu().tolist())
+                    transform_targets.extend(targets.cpu().tolist())
 
-        all_predictions.append(torch.tensor(transform_predictions))
-        all_targets.append(torch.tensor(transform_targets))
+            all_predictions.append(torch.tensor(transform_predictions))
+            all_targets.append(torch.tensor(transform_targets))
 
     # Convert predictions and targets to tensors
     avg_predictions = torch.mean(torch.stack(all_predictions), dim=0) # (len(test_dataset), 8)
