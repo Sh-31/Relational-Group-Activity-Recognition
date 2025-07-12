@@ -87,9 +87,12 @@ model:
     person_activity: 9
 training:
   group_activity:
+    balance: true
     batch_size: 4
     epochs: 50
-    label_smoothing: 0.15
+    label_smoothing: 0.1
     learning_rate: 1.0e-05
     optimizer: AdamW
+    scheduler: cosine_with_warmup
+    warmup_epochs: 25
     weight_decay: 1

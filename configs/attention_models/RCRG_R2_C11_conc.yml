@@ -1,4 +1,4 @@
-# RCRG_R2_C11_conc_temporal.yml
+# RCRG-R2-C11-conc-temporal.yml
 
 model:        
   num_classes: 
@@ -16,7 +16,10 @@ training:
     optimizer: "AdamW"
     # momentum: 0.9
     weight_decay: 1
-    label_smoothing: 0.15
+    label_smoothing: 0.1
+    warmup_epochs: 25 
+    scheduler: "cosine_with_warmup"  # Options: "cosine_with_warmup", "linear_with_warmup", "plateau_with_warmup"
+    balance: True
     
 data:
   dataset_name: "GroupActivityDataset"
@@ -30,7 +33,7 @@ data:
     test: [4, 5, 9, 11, 14, 20, 21, 25, 29, 34, 35, 37, 43, 44, 45, 47]
 
 experiment:
-  name: "RCRG_R2_C11_conc_attention"
+  name: "RCRG-R2-C11-conc-temporal"
   version: 1
   seed: 31
   description: "Close to the RCRG-1R-1C variant, but uses 2 relational layers (2R) of sizes 256 and 128. 

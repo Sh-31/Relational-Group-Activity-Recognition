@@ -1,0 +1,48 @@
+2025-07-12 14:17:49,123 - 
+==================================================
+Group Activity RCRG-R2-C11-Conc-Temporal-Attention Eval On Testset
+==================================================
+Accuracy : 91.77%
+Average Loss: 0.3975
+F1 Score (Weighted): 0.9175
+
+Classification Report:
+              precision    recall  f1-score   support
+
+       r_set       0.93      0.84      0.88       192
+     r_spike       0.94      0.94      0.94       173
+      r-pass       0.89      0.92      0.91       210
+  r_winpoint       0.88      0.93      0.91        87
+  l_winpoint       0.92      0.95      0.94       102
+      l-pass       0.92      0.93      0.93       226
+     l-spike       0.95      0.92      0.93       179
+       l_set       0.91      0.93      0.92       168
+
+    accuracy                           0.92      1337
+   macro avg       0.92      0.92      0.92      1337
+weighted avg       0.92      0.92      0.92      1337
+
+2025-07-12 14:31:26,773 - 
+==================================================
+Group Activity RCRG-R2-C11-Conc-Temporal-Attention-TTA Eval On Testset (with TTA - 3 transforms)
+==================================================
+Accuracy : 92.00%
+Average Loss: 0.3981
+F1 Score (Weighted): 0.9198
+
+Classification Report:
+              precision    recall  f1-score   support
+
+       r_set       0.93      0.84      0.88       192
+     r_spike       0.94      0.94      0.94       173
+      r-pass       0.89      0.92      0.91       210
+  r_winpoint       0.88      0.93      0.91        87
+  l_winpoint       0.94      0.95      0.95       102
+      l-pass       0.92      0.94      0.93       226
+     l-spike       0.95      0.93      0.94       179
+       l_set       0.91      0.92      0.92       168
+
+    accuracy                           0.92      1337
+   macro avg       0.92      0.92      0.92      1337
+weighted avg       0.92      0.92      0.92      1337
+
