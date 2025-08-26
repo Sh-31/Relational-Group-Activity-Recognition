@@ -212,9 +212,9 @@ For further information about dataset, you can check out the paper author's repo
 
 #### Single Frame Models:
 
-- **B1-NoRelations:** In the first stage, Resnet50 is fine-tuned and a person is represented with 2048-d features. In the second stage, each person is connected to a shared dense layer of 128 features, then the person representations (each of length 128 features) are pooled, and then fed to a softmax layer for group activity classification.
+- **B1-NoRelations:** In the first stage, Resnet50 is fine-tuned and a person is represented with 2048-d features. In the second stage, each person is connected to a shared dense layer of 128 features. The person representations (each of length 128 features) are then pooled and fed to a softmax layer for group activity classification.
 
-- **RCRG-1R-1C:** Pretrained Resnet50 network is fine-tuned and a person is represented with 4096-d features, then a single relational layer (1R), all people in 1 clique (1C), so all-pairs relationships are learned.
+- **RCRG-1R-1C:** Pretrained Resnet50 network is fine-tuned and a person is represented with 2048-d features, then a single relational layer (1R), all people in 1 clique (1C), so all-pairs relationships are learned.
 
 - **RCRG-1R-1C-!tuned:** Same as previous variant, but Pretrained Resnet50 network without fine-tuning.
 
@@ -254,15 +254,6 @@ Notes:
 
 - **RCRG-2R-21C:** The first layer has 2 cliques, one per team. The second layer is all-pairs relations (1C).
 
-Notes:
-- `Temporal`: postfix is used to indicate model work with a sequence of frames, not a frame.
-- `-conc` postfix is used to indicate concatenation pooling instead of max-pooling.
-- The original paper did not clearly specify where the LSTM unit should be integrated into the model.  
-  To explore this, I implemented three possible variants:  
-  - `V1`: LSTM **before** the relational layer → allows the relational layer to learn richer spatio-temporal features.  
-  - `V2`: LSTM **after** the relational layer → enhances the relational features with temporal modeling.  
-  - `V3`: LSTMs **both before and after** the relational layer → combines the strengths of V1 and V2.  
-
 ##### Performance comparison
 
 ###### Original Paper Baselines Score
@@ -279,13 +270,20 @@ Notes:
 | RCRG-2R-11C-conc-V3 | 91.40% | **91.77%** | 89.5% |
 | RCRG-2R-21C | \- | \- | 89.4% |
 
-Note:
-- I decide to train `RCRG-2R-11C-conc` only for now because it's best on my and paper Implementation.
-
+Notes:
+- `Temporal`: postfix is used to indicate model work with a sequence of frames, not a frame.
+- `-conc` postfix is used to indicate concatenation pooling instead of max-pooling.
+- The original paper did not clearly specify where the LSTM unit should be integrated into the model.  
+  To explore this, I implemented three possible variants:  
+  - `V1`: LSTM **before** the relational layer → allows the relational layer to learn richer spatio-temporal features.  
+  - `V2`: LSTM **after** the relational layer → enhances the relational features with temporal modeling.  
+  - `V3`: LSTMs **both before and after** the relational layer → combines the strengths of V1 and V2.
+- I decided to train `RCRG-2R-11C-conc` only, since it achieved the best performance in both my implementation and the paper’s results.
+- I implemented `B1-no-relations-temporal` to evaluate the impact of the relational layer (This model was not included in the original paper).
 
 #### Attention Models (new baseline):
 
-- Uses 2 relational layers (2R). The graphs of these 2 layers are 1 clique (11C) of all players, but this time using a graph attentional operator instead of an MLP for relational layers.
+- Uses 2 relational layers (2R). The graphs of these two layers are one clique (11C) of all players, but this time using a graph attentional operator instead of an MLP for the relational layers.
 
 ###### My Scores (Accuracy)
 
