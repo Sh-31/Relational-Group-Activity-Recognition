@@ -130,8 +130,8 @@ Replace the `modeling` folder with the downloaded folder:
 ```python
 import kagglehub
 
-# Download the latest version
-path = kagglehub.model_download("sherif31/group-activity-recognition/pyTorch/v1")
+# Download latest version
+path = kagglehub.model_download("sherif31/relational-group-activity-recognition/pyTorch/default")
 
 print("Path to model files:", path)
 ```
